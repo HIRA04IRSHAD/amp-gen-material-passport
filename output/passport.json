@@ -23,7 +23,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 1,
@@ -31,8 +32,8 @@
     "description": "Filling available excavated earth (excluding rock) in trenches, plinth, sides of foundations etc. in layers not exceeding 20 cm in depth consolidating each deposited layer by ramming & watering, lead upto 50 m and lift upto 1.5 m.",
     "floor_section": "Schedule 'A'",
     "discipline": "Civil & Sitework",
-    "material_product": "Earth",
-    "all_materials_detected": "Earth",
+    "material_product": "Soil",
+    "all_materials_detected": "Soil",
     "material_category": "Earthwork",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -49,7 +50,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 1,
@@ -57,8 +59,8 @@
     "description": "Filling the plinth with fine sand under floors including watering, ramming consolidating and dressing complete.",
     "floor_section": "Schedule 'A'",
     "discipline": "Civil & Sitework",
-    "material_product": "Sand",
-    "all_materials_detected": "Fine sand",
+    "material_product": "Fine sand",
+    "all_materials_detected": "Sand",
     "material_category": "Earthwork",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -75,7 +77,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 1,
@@ -86,7 +89,7 @@
     "material_product": "Soil",
     "all_materials_detected": "Soil",
     "material_category": "Earthwork",
-    "material_confidence": 0.95,
+    "material_confidence": 0.9,
     "mix_ratio": null,
     "original_quantity": 1.4,
     "original_unit": "100 Sq.m",
@@ -101,7 +104,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 2,
@@ -127,18 +131,19 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 2,
     "boq_item_no": "6",
     "description": "Providing and laying cement concrete in footings and bases for columns, excluding the cost of centring and shuttering with 1:5:10 (1 cement : 5 coarse sand : 10 graded stone aggregate 40 mm nominal size).",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:5:10",
     "original_quantity": 8.0,
     "original_unit": "cum",
@@ -153,18 +158,19 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 1.19
   },
   {
     "source_page": 2,
     "boq_item_no": "7",
     "description": "Providing and laying cement concrete in retaining walls, return walls, walls (any thickness) including attached pilasters, buttresses, plinth, string courses, fillets etc. upto floor two level, excluding the cost of centring and shuttering with 1:5:10 (1 cement : 5 fine sand : 10 graded stone aggregate 40 mm nominal size)",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Fine sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Fine sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:5:10",
     "original_quantity": 7.3,
     "original_unit": "cum",
@@ -179,18 +185,19 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 1.09
   },
   {
     "source_page": 2,
     "boq_item_no": "8",
     "description": "Providing and laying upto floor two level cement concrete in string or lacing courses, parapets, copings, bed blocks anchor blocks, plain window sills and the like excluding centring and shuttering, etc. with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 0.1,
     "original_unit": "cum",
@@ -205,7 +212,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.01
   },
   {
     "source_page": 3,
@@ -214,7 +222,7 @@
     "floor_section": null,
     "discipline": "Civil & Sitework",
     "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
     "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
@@ -231,7 +239,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 2.15
   },
   {
     "source_page": 3,
@@ -240,7 +249,7 @@
     "floor_section": null,
     "discipline": "Civil & Sitework",
     "material_product": "Petroleum bitumen",
-    "all_materials_detected": "Petroleum bitumen, Kerosene oil",
+    "all_materials_detected": "Bitumen, Kerosene oil",
     "material_category": "Other",
     "material_confidence": 0.9,
     "mix_ratio": null,
@@ -257,7 +266,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 3,
@@ -266,9 +276,9 @@
     "floor_section": null,
     "discipline": "Structural",
     "material_product": "Reinforced cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 11.3,
     "original_unit": "cum",
@@ -283,7 +293,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 1.68
   },
   {
     "source_page": 3,
@@ -292,9 +303,9 @@
     "floor_section": null,
     "discipline": "Structural",
     "material_product": "Reinforced cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 1.0,
     "original_unit": "cum",
@@ -309,7 +320,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.15
   },
   {
     "source_page": 3,
@@ -318,9 +330,9 @@
     "floor_section": null,
     "discipline": "Structural",
     "material_product": "Reinforced cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 0.6,
     "original_unit": "cum",
@@ -335,18 +347,19 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.09
   },
   {
-    "source_page": 4,
+    "source_page": 3,
     "boq_item_no": "14",
     "description": "Reinforced cement concrete work in lintels, beams, plinth beams and bresummers upto floor two level excluding the cost of centring, shuttering, finishing and reinforcement with 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size).",
     "floor_section": null,
     "discipline": "Structural",
     "material_product": "Reinforced cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 1.7,
     "original_unit": "cum",
@@ -361,7 +374,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.25
   },
   {
     "source_page": 4,
@@ -370,9 +384,9 @@
     "floor_section": null,
     "discipline": "Structural",
     "material_product": "Reinforced cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 0.1,
     "original_unit": "cum",
@@ -387,14 +401,15 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.01
   },
   {
     "source_page": 4,
     "boq_item_no": "16i",
     "description": "Centring and shuttering including strutting, proping etc. and removal of form work for : Suspended floors,roofs,landings balconies and chajjas.",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Formwork",
     "all_materials_detected": "Formwork",
     "material_category": "Other",
@@ -413,14 +428,15 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 4,
     "boq_item_no": "16ii",
     "description": "Centring and shuttering including strutting, proping etc. and removal of form work for : Shelves",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Formwork",
     "all_materials_detected": "Formwork",
     "material_category": "Other",
@@ -439,14 +455,15 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 4,
     "boq_item_no": "16iii",
     "description": "Centring and shuttering including strutting, proping etc. and removal of form work for : Lintels, beams, plinth beams, girders bressumers and cantilever.",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Formwork",
     "all_materials_detected": "Formwork",
     "material_category": "Other",
@@ -465,14 +482,15 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 4,
     "boq_item_no": "16iv",
     "description": "Centring and shuttering including strutting, proping etc. and removal of form work for : Columns, pillars, posts and struts.",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Formwork",
     "all_materials_detected": "Formwork",
     "material_category": "Other",
@@ -491,14 +509,15 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 4,
     "boq_item_no": "16v",
     "description": "Centring and shuttering including strutting, proping etc. and removal of form work for : Vertical and horizontal fins individually or forming box louvers hand and facias.",
     "floor_section": null,
-    "discipline": "Structural",
+    "discipline": "Civil & Sitework",
     "material_product": "Formwork",
     "all_materials_detected": "Formwork",
     "material_category": "Other",
@@ -517,7 +536,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 4,
@@ -525,10 +545,10 @@
     "description": "Reinforcement for RCC work including bending binding and placing in position complete. Mild steel and medium tensile steel bars.",
     "floor_section": null,
     "discipline": "Structural",
-    "material_product": "Mild steel",
+    "material_product": "Mild steel bar",
     "all_materials_detected": "Steel",
     "material_category": "Steel",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": null,
     "original_quantity": 100.0,
     "original_unit": "kg",
@@ -543,7 +563,8 @@
       "length_m": "",
       "weight_kg": 100.0,
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 155.0
   },
   {
     "source_page": 4,
@@ -551,10 +572,10 @@
     "description": "Reinforcement for RCC work including bending binding and placing in position complete. Cold twisted bars",
     "floor_section": null,
     "discipline": "Structural",
-    "material_product": "Cold twisted steel",
+    "material_product": "Cold twisted bar",
     "all_materials_detected": "Steel",
     "material_category": "Steel",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": null,
     "original_quantity": 1375.0,
     "original_unit": "kg",
@@ -569,7 +590,8 @@
       "length_m": "",
       "weight_kg": 1375.0,
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 2131.25
   },
   {
     "source_page": 4,
@@ -578,9 +600,9 @@
     "floor_section": null,
     "discipline": "Structural",
     "material_product": "Reinforced cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 0.8,
     "original_unit": "cum",
@@ -595,16 +617,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.12
   },
   {
     "source_page": 5,
     "boq_item_no": "19",
-    "description": "Brick work with bricks of class designation___ in foundation and plinth in cement mortar 1:6 (1 cement : 6 coarse sand).",
+    "description": "Brick work with bricks of class designation in foundation and plinth in cement mortar 1:6 (1 cement : 6 coarse sand).",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Burnt brick",
-    "all_materials_detected": "Brick, Cement, Coarse sand",
+    "material_product": "Brick work",
+    "all_materials_detected": "Brick, Cement, Sand",
     "material_category": "Masonry",
     "material_confidence": 0.95,
     "mix_ratio": "1:6",
@@ -614,23 +637,24 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.1.14/6.5.1 6.5.2",
+    "schedule_item_code": "6.1.14/6.5.1/6.5.2",
     "routed_quantities": {
       "volume_cum": 17.0,
       "area_sqm": "",
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 3.62
   },
   {
     "source_page": 5,
     "boq_item_no": "20",
-    "description": "Brick work with bricks of class designation___ in super structure above plinth upto floor two level in cement mortar 1:6 (1 cement : 6 coarse sand).",
+    "description": "Brick work with bricks of class designation in super structure above plinth upto floor two level in cement mortar 1:6 (1 cement : 6 coarse sand).",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Burnt brick",
-    "all_materials_detected": "Brick, Cement, Coarse sand",
+    "material_product": "Brick work",
+    "all_materials_detected": "Brick, Cement, Sand",
     "material_category": "Masonry",
     "material_confidence": 0.95,
     "mix_ratio": "1:6",
@@ -640,23 +664,24 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.1.14/6.3 6.5.1/6.5.2",
+    "schedule_item_code": "6.1.14/6.3/6.5.1/6.5.2",
     "routed_quantities": {
       "volume_cum": 40.3,
       "area_sqm": "",
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 8.58
   },
   {
     "source_page": 5,
     "boq_item_no": "21",
-    "description": "Brick work 7 cm thick with bricks of class designation ------ in super structure upto floor two level in cement mortar 1:3 (1 cement : 3 coarse sand).",
+    "description": "Brick work 7 cm thick with bricks of class designation in super structure upto floor two level in cement mortar 1:3 (1 cement : 3 coarse sand).",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Burnt brick",
-    "all_materials_detected": "Brick, Cement, Coarse sand",
+    "material_product": "Brick work",
+    "all_materials_detected": "Brick, Cement, Sand",
     "material_category": "Masonry",
     "material_confidence": 0.95,
     "mix_ratio": "1:3",
@@ -666,23 +691,24 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.13/6.21/ 6.5.1/6.5.2",
+    "schedule_item_code": "6.13/6.21/6.5.1/6.5.2",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 0.9,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.19
   },
   {
     "source_page": 5,
     "boq_item_no": "22",
-    "description": "Half brick masonry with bricks of class designation ____ in foundation & plinth in cement mortar 1:4 (1 cement : 4 coarse sand)",
+    "description": "Half brick masonry with bricks of class designation in foundation & plinth in cement mortar 1:4 (1 cement : 4 coarse sand)",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Burnt brick",
-    "all_materials_detected": "Brick, Cement, Coarse sand",
+    "material_product": "Brick masonry",
+    "all_materials_detected": "Brick, Cement, Sand",
     "material_category": "Masonry",
     "material_confidence": 0.95,
     "mix_ratio": "1:4",
@@ -692,23 +718,24 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.18.4/6.21 6.5.1/6.5.2",
+    "schedule_item_code": "6.18.4/6.21/6.5.1/6.5.2",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 4.8,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 1.02
   },
   {
     "source_page": 5,
     "boq_item_no": "23",
-    "description": "Half brick masonry with bricks of class designation ____ in super structure upto floor two level in cement mortar 1:4 (1 cement : 4 coarse sand).",
+    "description": "Half brick masonry with bricks of class designation in super structure upto floor two level in cement mortar 1:4 (1 cement : 4 coarse sand).",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Burnt brick",
-    "all_materials_detected": "Brick, Cement, Coarse sand",
+    "material_product": "Brick masonry",
+    "all_materials_detected": "Brick, Cement, Sand",
     "material_category": "Masonry",
     "material_confidence": 0.95,
     "mix_ratio": "1:4",
@@ -718,22 +745,23 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.18.4/6.19.1 6.20/6.21.1/ 6.21.2",
+    "schedule_item_code": "6.18.4/6.19.1/6.20/6.21.1/6.21.2",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 18.0,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 3.83
   },
   {
     "source_page": 5,
     "boq_item_no": "24",
-    "description": "Providing ________ wood work in frames of doors, windows, clerestory windows and other frames, wrought framed and fixed in position.",
+    "description": "Providing wood work in frames of doors, windows, clerestory windows and other frames, wrought framed and fixed in position.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Wood",
+    "material_product": "Wood work",
     "all_materials_detected": "Wood",
     "material_category": "Timber",
     "material_confidence": 0.95,
@@ -751,16 +779,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 0.01
   },
   {
     "source_page": 5,
     "boq_item_no": "25",
-    "description": "Providing and fixing 35 mm thick battened and framed door shutters of ________ wood including bright finished or/and black enamelled MS butt hinges with necessary screws.",
+    "description": "Providing and fixing 35 mm thick battended and framed door shutters of wood including bright finished or/and black enamelled MS butt hinges with necessary screws.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Wood",
-    "all_materials_detected": "Wood, Mild steel",
+    "material_product": "Wood door shutters",
+    "all_materials_detected": "Wood, MS butt hinges",
     "material_category": "Timber",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -777,16 +806,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 5.51
   },
   {
-    "source_page": 6,
+    "source_page": 5,
     "boq_item_no": "26",
     "description": "Providing and fixing 25 mm thick flush door (for cupboard) shutters core of block board construction with frame of Ist class hard wood and well matched Ist class teak ply veneering with vertical grains or cross bands and face veneer on one face and commercial ply veneering with vertical grains or cross bands and face veneer on other face of shutters, including nickel plated bright finished MS piano hinges with necessary screws.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Flush door",
-    "all_materials_detected": "Hard wood, Teak ply, Commercial ply, Mild steel",
+    "material_product": "Flush door shutter",
+    "all_materials_detected": "Block board, Hard wood, Teak ply, Commercial ply, MS piano hinges",
     "material_category": "Timber",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -803,15 +833,16 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 1.44
   },
   {
     "source_page": 6,
     "boq_item_no": "27",
     "description": "Providing 50x50x50 mm 2nd class Teak wood plugs including cutting brick work and fixing in cement mortar 1:3 (1 cement :3 fine sand) and making good the walls etc.",
     "floor_section": null,
-    "discipline": "Finishes",
-    "material_product": "Teak wood",
+    "discipline": "Civil & Sitework",
+    "material_product": "Teak wood plugs",
     "all_materials_detected": "Teak wood, Cement, Fine sand",
     "material_category": "Timber",
     "material_confidence": 0.95,
@@ -829,18 +860,19 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 20.0
-    }
+    },
+    "embodied_carbon": 6.12
   },
   {
     "source_page": 6,
     "boq_item_no": "28",
-    "description": "Providing and fixing M.S.oxidised fan light .ventilator catch with necessary screws etc. complete.",
+    "description": "Providing and fixing M.S.oxidised fan light ventilator catch with necessary screws etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Mild steel",
-    "all_materials_detected": "Mild steel",
+    "material_product": "M.S. oxidised fan light ventilator catch",
+    "all_materials_detected": "M.S.",
     "material_category": "Steel",
-    "material_confidence": 0.95,
+    "material_confidence": 0.9,
     "mix_ratio": null,
     "original_quantity": 6.0,
     "original_unit": "nos",
@@ -855,18 +887,19 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 6.0
-    }
+    },
+    "embodied_carbon": 9.3
   },
   {
     "source_page": 6,
     "boq_item_no": "29",
-    "description": "Providing and fixing 90 mm oxidised M.S. hasp and staple (safety type) with necessaary screws etc. complete.",
+    "description": "Providing and fixing 90 mm oxidised M.S. hasp and staple (safety type) with necessary screws etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Mild steel",
-    "all_materials_detected": "Mild steel",
+    "material_product": "Oxidised M.S. hasp and staple",
+    "all_materials_detected": "M.S.",
     "material_category": "Steel",
-    "material_confidence": 0.95,
+    "material_confidence": 0.9,
     "mix_ratio": null,
     "original_quantity": 2.0,
     "original_unit": "nos",
@@ -881,7 +914,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 2.0
-    }
+    },
+    "embodied_carbon": 3.1
   },
   {
     "source_page": 6,
@@ -889,7 +923,7 @@
     "description": "Providing and fixing aluminium sliding door bolts 300 x 16 mm anodised transparent or dyed to required colour or shade with nuts and screws etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium sliding door bolts",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -907,7 +941,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 10.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 6,
@@ -915,7 +950,7 @@
     "description": "Providing and fixing aluminium tower bolts anodised transparent or dyed to required colour or shade with necessary screws etc. complete. 200 x 10 mm",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium tower bolts",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -933,7 +968,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 10.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 6,
@@ -941,7 +977,7 @@
     "description": "Providing and fixing aluminium tower bolts anodised transparent or dyed to required colour or shade with necessary screws etc. complete. 100 x 10 mm",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium tower bolts",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -959,7 +995,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 8.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 7,
@@ -967,7 +1004,7 @@
     "description": "Providing and fixing aluminium handles anodised transparent or dyed to required colour or shade with necessary screws etc. complete. 100 mm",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium handles",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -985,7 +1022,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 20.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 7,
@@ -993,7 +1031,7 @@
     "description": "Providing and fixing aluminium handles anodised transparent or dyed to required colour or shade with necessary screws etc. complete. 75 mm",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium handles",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -1011,7 +1049,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 4.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 7,
@@ -1019,7 +1058,7 @@
     "description": "Providing and fixing aluminium hanging floor door stopper anodised transparent or dyed to required colour & shade with necessary screws etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium door stopper",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -1037,7 +1076,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 10.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 7,
@@ -1045,8 +1085,8 @@
     "description": "Providing and fixing steel glazed doors, windows and ventilators of standard rolled steel sections, joints mitred and welded with 15x3 mm lugs, 10 cm long, with steel lugs, embedded in cement concrete blocks 15x10x10 cm of 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) or with wooden plugs and screws or rawl plugs and screws or with fixing clips or with bolts and nuts as required, including providing and fixing of (Pin Head) 3mm thick glass panes with glazing clips and special metal sash putty of approved make complete including applying a priming coat of approved steel primer; excluding the cost of metal beading and other fitting except necessary hinges or pivots as required. Windows - side hung",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Steel",
-    "all_materials_detected": "Steel, Cement, Coarse sand, Graded stone aggregate, Glass",
+    "material_product": "Steel glazed windows",
+    "all_materials_detected": "Steel, Cement, Coarse sand, Stone aggregate, Glass, Putty",
     "material_category": "Steel",
     "material_confidence": 0.95,
     "mix_ratio": "1:3:6",
@@ -1063,7 +1103,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 17.52
   },
   {
     "source_page": 7,
@@ -1071,8 +1112,8 @@
     "description": "Providing and fixing steel glazed doors, windows and ventilators of standard rolled steel sections, joints mitred and welded with 15x3 mm lugs, 10 cm long, with steel lugs, embedded in cement concrete blocks 15x10x10 cm of 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) or with wooden plugs and screws or rawl plugs and screws or with fixing clips or with bolts and nuts as required, including providing and fixing of (Pin Head) 3mm thick glass panes with glazing clips and special metal sash putty of approved make complete including applying a priming coat of approved steel primer; excluding the cost of metal beading and other fitting except necessary hinges or pivots as required. Ventilators - centre hung",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Steel",
-    "all_materials_detected": "Steel, Cement, Coarse sand, Graded stone aggregate, Glass",
+    "material_product": "Steel glazed ventilators",
+    "all_materials_detected": "Steel, Cement, Coarse sand, Stone aggregate, Glass, Putty",
     "material_category": "Steel",
     "material_confidence": 0.95,
     "mix_ratio": "1:3:6",
@@ -1089,7 +1130,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 1.55
   },
   {
     "source_page": 7,
@@ -1097,7 +1139,7 @@
     "description": "Providing and fixing oxidised mild steel casement window fastners of minimum weight 200 grams to side hung steel windows with necessary welding and machine screws etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Mild steel",
+    "material_product": "Mild steel casement window fastners",
     "all_materials_detected": "Mild steel",
     "material_category": "Steel",
     "material_confidence": 0.95,
@@ -1115,15 +1157,16 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 21.0
-    }
+    },
+    "embodied_carbon": 32.55
   },
   {
     "source_page": 8,
     "boq_item_no": "36",
-    "description": "Providing and fixing aluminium casement stays anodised transparent or dyed to requird colour and shade with with necessary welding and machine screws etc. complete.",
+    "description": "Providing and fixing aluminium casement stays anodised transparent or dyed to required colour and shade with with necessary welding and machine screws etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Aluminium",
+    "material_product": "Aluminium casement stays",
     "all_materials_detected": "Aluminium",
     "material_category": "Other",
     "material_confidence": 0.95,
@@ -1141,7 +1184,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 21.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 8,
@@ -1149,8 +1193,8 @@
     "description": "Providing and welding 20x4 mm M S Guard Flats 10cm c/c in steel windows of standard rolled steel section including a coat of steel primer as per drawing and specification complete in all respect.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Mild steel",
-    "all_materials_detected": "Mild steel, Steel primer",
+    "material_product": "M S Guard Flats",
+    "all_materials_detected": "MS, Steel primer",
     "material_category": "Steel",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -1167,7 +1211,8 @@
       "length_m": "",
       "weight_kg": 66.0,
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 102.3
   },
   {
     "source_page": 8,
@@ -1175,8 +1220,8 @@
     "description": "Providing and fixing T - Iron frames for doors, windows and ventilators of mild steel Tee - sections, joints mitred and welded with 15x3 mm lugs 10 cm long embedded in cement concrete blocks 15x10x10 cm of 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) or with wooden plugs and screws or rawl plugs and screws or with fixing clips or with bolts and nuts as required, including fixing of necessary butt hinges and screws and applying a priming coat of approved steel primer.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Mild steel",
-    "all_materials_detected": "Mild steel, Cement, Coarse sand, Graded stone aggregate",
+    "material_product": "T-Iron frames",
+    "all_materials_detected": "Mild steel, Cement, Sand, Stone aggregate, Steel primer",
     "material_category": "Steel",
     "material_confidence": 0.95,
     "mix_ratio": "1:3:6",
@@ -1193,7 +1238,8 @@
       "length_m": "",
       "weight_kg": 187.0,
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 289.85
   },
   {
     "source_page": 8,
@@ -1201,8 +1247,8 @@
     "description": "Providing and fixing MS fan clamp type I of 16 mm dia MS bar bent to shape with hooked ends in RCC slabs during laying including painting the exposed portion of loop, all as per standard design complete.",
     "floor_section": null,
     "discipline": "Electrical",
-    "material_product": "Mild steel",
-    "all_materials_detected": "Mild steel",
+    "material_product": "MS fan clamp",
+    "all_materials_detected": "MS bar, Paint",
     "material_category": "Steel",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -1219,7 +1265,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 5.0
-    }
+    },
+    "embodied_carbon": 7.75
   },
   {
     "source_page": 8,
@@ -1227,10 +1274,10 @@
     "description": "40 mm thick cement concrete flooring 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20.0 mm nominal size) finished with a floating coat of neat cement including cement slurry, rounding off edges and strips etc. but excluding the cost of nosing of steps etc. complete.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate",
+    "material_product": "Cement concrete flooring",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 68.0,
     "original_unit": "sqm",
@@ -1245,7 +1292,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 10.13
   },
   {
     "source_page": 9,
@@ -1253,7 +1301,7 @@
     "description": "18 mm thick cement plaster skirting (upto 30 cm height) with cement mortar 1:3 (1 cement : 3 coarse sand) finished with a floating coat of neat cement including rounding of junctions with floors.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Cement plaster",
+    "material_product": "Cement plaster skirting",
     "all_materials_detected": "Cement, Coarse sand",
     "material_category": "Paint/Finish",
     "material_confidence": 0.95,
@@ -1271,7 +1319,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 10.45
   },
   {
     "source_page": 9,
@@ -1279,9 +1328,9 @@
     "description": "40 mm thick marble chips flooring, rubbed and polished to granolithic finish, under layer 31 mm thick cement concrete 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 12.5 mm nominal size) and top layer 9 mm thick with white black, chocolate, grey yellow or Baroda green marble chips of sizes from 4 mm to 7 mm nominal size laid in cement marble powder mix 3:1 (3 cement : 1 marble powder) by weight in proportion of 4:7 (4 cement marble powder mix : 7 marble chips) by volume including cement slurry etc., complete using dark shade pigment with ordinary cement.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Marble chips",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate, Marble chips, Marble powder",
-    "material_category": "Paint/Finish",
+    "material_product": "Marble chips flooring",
+    "all_materials_detected": "Cement, Sand, Stone aggregate, Marble chips, Marble powder, Pigment",
+    "material_category": "Finishes",
     "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
     "original_quantity": 9.0,
@@ -1297,7 +1346,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 9,
@@ -1305,10 +1355,10 @@
     "description": "Add or deduct for providing and fixing glass strips in joints of terrazzo/cement concrete floors- 40 mm wide and 6 mm thick.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Glass",
+    "material_product": "Glass strips",
     "all_materials_detected": "Glass",
     "material_category": "Other",
-    "material_confidence": 0.9,
+    "material_confidence": 0.95,
     "mix_ratio": null,
     "original_quantity": 18.0,
     "original_unit": "m",
@@ -1323,18 +1373,19 @@
       "length_m": 18.0,
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 9,
     "boq_item_no": "44",
-    "description": "Painting top of roofs with bitumen of approved quality at 17 Kg. per 10 square metre impregnated with a coat of coarse sand at 3/2 60 dm per 10 m including cleaning the slab surface with brushes and finally with a piece of cloth lightly soaked in kerosene oil complete with residual type petroleum bitumen of penetration 80/100.",
+    "description": "Painting top of roofs with bitumen of approved quality at 17 Kg. per 10 square metre impregnated with a coat of coarse sand at 3/60 dm3 per 10 m2 including cleaning the slab surface with brushes and finally with a piece of cloth lightly soaked in kerosene oil complete with residual type petroleum bitumen of penetration 80/100.",
     "floor_section": null,
-    "discipline": "Finishes",
+    "discipline": "Civil & Sitework",
     "material_product": "Bitumen",
     "all_materials_detected": "Bitumen, Coarse sand, Kerosene oil",
     "material_category": "Paint/Finish",
-    "material_confidence": 0.95,
+    "material_confidence": 0.9,
     "mix_ratio": null,
     "original_quantity": 65.0,
     "original_unit": "sqm",
@@ -1349,16 +1400,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 61.75
   },
   {
-    "source_page": 10,
+    "source_page": 9,
     "boq_item_no": "45",
     "description": "Lime concrete terracing on roofs, average thickness 10 cm laid to fall with 25 mm nominal size brick aggregate and 50% lime mortar 1:2 (1 lime putty : 2 surkhi) rammed and finished with gur and belgiri treatment complete and covered with flat FPS brick tiles of class designation 100 grouted with cement mortar 1:3 (1 cement : 3 fine sand) mixed with 5% crude oil by wt. of cement, over 12 mm layer of cement mortar 1:3 (1 cement : 3 fine sand) and finished neat.",
     "floor_section": null,
-    "discipline": "Finishes",
-    "material_product": "Lime concrete",
-    "all_materials_detected": "Lime, Brick aggregate, Surkhi, Brick tiles, Cement, Fine sand, Crude oil",
+    "discipline": "Civil & Sitework",
+    "material_product": "Lime concrete terracing",
+    "all_materials_detected": "Brick aggregate, Lime putty, Surkhi, Gur, Belgiri, Brick tiles, Cement, Fine sand, Crude oil",
     "material_category": "Concrete",
     "material_confidence": 0.95,
     "mix_ratio": "1:2",
@@ -1375,7 +1427,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 9.68
   },
   {
     "source_page": 10,
@@ -1383,8 +1436,8 @@
     "description": "Providing and laying 25 mm thick burnt clay tiles 250x250x25 mm of approved quality over roofs with 1 cm side joints grouted with CM 1:3 (1 cement : 3 fine sand) over 15 mm thick bed of cement mortar 1:3 (1 cement : 3 fine sand) and finished neat.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Burnt clay tile",
-    "all_materials_detected": "Burnt clay tile, Cement, Fine sand",
+    "material_product": "Burnt clay tiles",
+    "all_materials_detected": "Clay tiles, Cement, Fine sand",
     "material_category": "Masonry",
     "material_confidence": 0.95,
     "mix_ratio": "1:3",
@@ -1401,7 +1454,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 6.82
   },
   {
     "source_page": 10,
@@ -1409,8 +1463,8 @@
     "description": "Providing gola 15x15 cm in size in cement concrete mix 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) covered with brick tiles in CM 1:3 (1 cement : 3 coarse sand) as per drawing and specifications complete in all respects.",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate, Brick tile",
+    "material_product": "Cement concrete gola",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate, Brick tiles",
     "material_category": "Concrete",
     "material_confidence": 0.95,
     "mix_ratio": "1:3:6",
@@ -1427,7 +1481,8 @@
       "length_m": 46.0,
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 6.85
   },
   {
     "source_page": 10,
@@ -1435,8 +1490,8 @@
     "description": "Making khurras 45 x 45 cm with average minimum thickness of 5 cm cement concrete 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size) over PVC sheet 1m x 1m x 400 micron, finished with 12 cement plaster 1:3 (1 cement : 3 coarse sand) and a coat of neat cement rounding the edges and making and finishing the outlet complete.",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate, PVC sheet",
+    "material_product": "Cement concrete khurras",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate, PVC sheet",
     "material_category": "Concrete",
     "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
@@ -1453,7 +1508,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 3.0
-    }
+    },
+    "embodied_carbon": 0.45
   },
   {
     "source_page": 10,
@@ -1461,8 +1517,8 @@
     "description": "Providing and fixing on wallface 100 mm diameter CI rain water pipe including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand)",
     "floor_section": null,
     "discipline": "Plumbing & Sanitary",
-    "material_product": "Cast iron",
-    "all_materials_detected": "Cast iron, Cement, Fine sand",
+    "material_product": "CI rain water pipe",
+    "all_materials_detected": "Cast Iron, Spun yarn, Cement, Fine sand",
     "material_category": "Other",
     "material_confidence": 0.95,
     "mix_ratio": "1:2",
@@ -1479,16 +1535,17 @@
       "length_m": 10.0,
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": ""
   },
   {
-    "source_page": 11,
+    "source_page": 10,
     "boq_item_no": "50",
     "description": "Providing and fixing 100 mm dia MS holderbat clamps of approved design to CI or SCI rain water pipes embedded in and including cement concrete blocks 10 x 10 x 10 cm of 1:2:4 (1 cement : 2 coarse sand : 4 graded stone aggregate 20 mm nominal size) and cost of cutting holes and making good the walls etc.",
     "floor_section": null,
     "discipline": "Plumbing & Sanitary",
-    "material_product": "Mild steel",
-    "all_materials_detected": "Mild steel, Cement, Coarse sand, Graded stone aggregate",
+    "material_product": "MS holderbat clamps",
+    "all_materials_detected": "MS, Cement, Coarse sand, Stone aggregate",
     "material_category": "Steel",
     "material_confidence": 0.95,
     "mix_ratio": "1:2:4",
@@ -1505,16 +1562,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 9.0
-    }
+    },
+    "embodied_carbon": 13.95
   },
   {
     "source_page": 11,
     "boq_item_no": "51i",
-    "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand). CI plain head 100 mm dia",
+    "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand) CI plain head 100 mm dia",
     "floor_section": null,
     "discipline": "Plumbing & Sanitary",
-    "material_product": "Cast iron",
-    "all_materials_detected": "Cast iron, Cement, Fine sand",
+    "material_product": "CI plain head",
+    "all_materials_detected": "Cast Iron, Spun yarn, Cement, Fine sand",
     "material_category": "Other",
     "material_confidence": 0.95,
     "mix_ratio": "1:2",
@@ -1531,16 +1589,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 3.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 11,
     "boq_item_no": "51ii",
-    "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand). CI plain shoe - 100 mm dia",
+    "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand) CI plain shoe - 100 mm dia",
     "floor_section": null,
     "discipline": "Plumbing & Sanitary",
-    "material_product": "Cast iron",
-    "all_materials_detected": "Cast iron, Cement, Fine sand",
+    "material_product": "CI plain shoe",
+    "all_materials_detected": "Cast Iron, Spun yarn, Cement, Fine sand",
     "material_category": "Other",
     "material_confidence": 0.95,
     "mix_ratio": "1:2",
@@ -1557,16 +1616,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 3.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 11,
     "boq_item_no": "51iii",
-    "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand). CI plain bend - 100 mm dia",
+    "description": "Providing and fixing on wall face CI accessories for rain water pipes including filling the joints with spun yarn soaked in neat cement slurry and cement mortar 1:2 (1 cement : 2 fine sand) CI plain bend - 100 mm dia",
     "floor_section": null,
     "discipline": "Plumbing & Sanitary",
-    "material_product": "Cast iron",
-    "all_materials_detected": "Cast iron, Cement, Fine sand",
+    "material_product": "CI plain bend",
+    "all_materials_detected": "Cast Iron, Spun yarn, Cement, Fine sand",
     "material_category": "Other",
     "material_confidence": 0.95,
     "mix_ratio": "1:2",
@@ -1583,7 +1643,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": 3.0
-    }
+    },
+    "embodied_carbon": ""
   },
   {
     "source_page": 11,
@@ -1609,7 +1670,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 209.0
   },
   {
     "source_page": 11,
@@ -1635,7 +1697,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 209.0
   },
   {
     "source_page": 11,
@@ -1661,16 +1724,17 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 18.05
   },
   {
-    "source_page": 12,
+    "source_page": 11,
     "boq_item_no": "55",
     "description": "18 mm plastering with terrazzo finish for dado rubbed and polished complete, under layer 12 mm thick cement plaster 1:3 (1 cement : 3 coarse sand) and top layer 6 mm thick white, black, chocolate, grey, yellow or Baroda green marble chips of 3 mm and down size laid in cement marble powder mix 3:1 (3 cement : 1 marble powder) by weight in proportion of 4:7 (4 cement marble powder mix : 7 marble chips) by volume.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Terrazzo plaster",
-    "all_materials_detected": "Cement, Coarse sand, Marble chips, Marble powder",
+    "material_product": "Terrazzo plastering",
+    "all_materials_detected": "Cement, Sand, Marble chips, Marble powder",
     "material_category": "Paint/Finish",
     "material_confidence": 0.95,
     "mix_ratio": "1:3",
@@ -1680,14 +1744,15 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.31/13.24.1",
+    "schedule_item_code": "13.41",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 20.0,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 19.0
   },
   {
     "source_page": 12,
@@ -1695,7 +1760,7 @@
     "description": "Finishing and plastering the exposed surface of RCC with cement mortar 1:3",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Cement mortar",
+    "material_product": "Cement mortar plaster",
     "all_materials_detected": "Cement, Sand",
     "material_category": "Paint/Finish",
     "material_confidence": 0.95,
@@ -1706,14 +1771,15 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.70.1",
+    "schedule_item_code": "5.31/13.24.1",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 155.0,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 147.25
   },
   {
     "source_page": 12,
@@ -1721,8 +1787,35 @@
     "description": "White washing with lime to give an even shade on new work (three or more coats).",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Lime wash",
+    "material_product": "Lime white wash",
     "all_materials_detected": "Lime",
+    "material_category": "Paint/Finish",
+    "material_confidence": 0.95,
+    "mix_ratio": null,
+    "original_quantity": 285.0,
+    "original_unit": "sqm",
+    "thickness_mm": null,
+    "diameter_mm": null,
+    "unit_rate": null,
+    "total_cost": null,
+    "schedule_item_code": "13.70.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 285.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    },
+    "embodied_carbon": 270.75
+  },
+  {
+    "source_page": 12,
+    "boq_item_no": "58",
+    "description": "Colour washing such as green, blue or buff to give an even shade on new work (two or more coats) with a base coat of white washing with lime.",
+    "floor_section": null,
+    "discipline": "Finishes",
+    "material_product": "Colour wash",
+    "all_materials_detected": "Lime, Colour wash",
     "material_category": "Paint/Finish",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -1739,41 +1832,16 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
-  },
-  {
-    "source_page": 12,
-    "boq_item_no": "58",
-    "description": "Colour washing such as green, blue or buff to give an even shade on new work (two. or more coats) with a base coat of white washing with lime.",
-    "floor_section": null,
-    "discipline": "Finishes",
-    "material_product": "Colour wash",
-    "all_materials_detected": "Lime",
-    "material_category": "Paint/Finish",
-    "material_confidence": 0.95,
-    "mix_ratio": null,
-    "original_quantity": 285.0,
-    "original_unit": "sqm",
-    "thickness_mm": null,
-    "diameter_mm": null,
-    "unit_rate": null,
-    "total_cost": null,
-    "schedule_item_code": "13.81.1",
-    "routed_quantities": {
-      "volume_cum": "",
-      "area_sqm": 285.0,
-      "length_m": "",
-      "weight_kg": "",
-      "count_nos": ""
-    }
+    },
+    "embodied_carbon": 270.75
   },
   {
     "source_page": 12,
     "boq_item_no": "59",
-    "description": "Applying priming coat with ready mixed pink or gray primer of approved brand and manufacture on wood work (hard and soft wood)",
+    "description": "Applying priming coat with ready mixed pink or gray primer of approved brand and manufacture - on wood work (hard and soft wood)",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "Primer",
+    "material_product": "Wood primer",
     "all_materials_detected": "Primer",
     "material_category": "Paint/Finish",
     "material_confidence": 0.95,
@@ -1784,14 +1852,15 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.81.4",
+    "schedule_item_code": "13.81.1",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 47.0,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 44.65
   },
   {
     "source_page": 12,
@@ -1810,14 +1879,15 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.84.3",
+    "schedule_item_code": "13.81.4",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 30.0,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 28.5
   },
   {
     "source_page": 12,
@@ -1836,14 +1906,15 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.94.1",
+    "schedule_item_code": "13.84.3",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": "",
       "length_m": 10.0,
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 9.5
   },
   {
     "source_page": 12,
@@ -1862,14 +1933,15 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": null,
+    "schedule_item_code": "13.94.1",
     "routed_quantities": {
       "volume_cum": "",
       "area_sqm": 77.0,
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 73.15
   },
   {
     "source_page": 13,
@@ -1877,8 +1949,8 @@
     "description": "French spirit polishing two or more coats on new works including a coat of wood filler.",
     "floor_section": null,
     "discipline": "Finishes",
-    "material_product": "French polish",
-    "all_materials_detected": "French polish, Wood filler",
+    "material_product": "French spirit polish",
+    "all_materials_detected": "French spirit polish, Wood filler",
     "material_category": "Paint/Finish",
     "material_confidence": 0.95,
     "mix_ratio": null,
@@ -1895,7 +1967,8 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 12.35
   },
   {
     "source_page": 13,
@@ -1903,10 +1976,10 @@
     "description": "Making plinth protection 50 mm thick of cement concrete 1:3:6 (1 cement : 3 coarse sand : 6 graded stone aggregate 20 mm nominal size) over 75 mm bed of dry brick ballast 40 mm nominal size well rammed and consolidated and grouted with fine sand, including finishing the top smooth.",
     "floor_section": null,
     "discipline": "Civil & Sitework",
-    "material_product": "Cement concrete",
-    "all_materials_detected": "Cement, Coarse sand, Graded stone aggregate, Brick ballast, Fine sand",
+    "material_product": "Cement concrete plinth protection",
+    "all_materials_detected": "Cement, Coarse sand, Stone aggregate, Brick ballast, Fine sand",
     "material_category": "Concrete",
-    "material_confidence": 0.98,
+    "material_confidence": 0.95,
     "mix_ratio": "1:3:6",
     "original_quantity": 34.6,
     "original_unit": "sqm",
@@ -1921,6 +1994,7 @@
       "length_m": "",
       "weight_kg": "",
       "count_nos": ""
-    }
+    },
+    "embodied_carbon": 5.16
   }
 ]

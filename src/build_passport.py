@@ -9,6 +9,17 @@ TEMPLATE_EXCEL = Path("AMP_Passport_Template.xlsx")
 OUTPUT_EXCEL = Path("output/passport_filled.xlsx")
 OUTPUT_JSON = Path("output/passport.json")
 
+
+# Values sourced via NotebookLM (ICE Database V4.0/V4.1)
+EPD_DATABASE = {
+    "Concrete": {"carbon_factor": 0.149, "source": "ICE Database V4.1 (Concrete C35/45) via NZBG Guide V1.0"},
+    "Steel": {"carbon_factor": 1.55, "source": "ICE Database V4.0 (Steel Open Sections) via NZBG Guide V1.0"},
+    "Masonry": {"carbon_factor": 0.213, "source": "ICE Database V4.0 (Brick Clay) via NZBG Guide V1.0"},
+    "Timber": {"carbon_factor": 0.306, "source": "ICE Database V4.0 (Timber Hardwood) via NZBG Guide V1.0"},
+    "Glass": {"carbon_factor": 1.15, "source": "ICE Database V3.0 (Glass Float) / Fair Comparison Standard"},
+    "Paint/Finish": {"carbon_factor": 0.95, "source": "ICE Database V3.0 (Generic Assumed)"}
+}
+
 def normalize_unit(unit_str):
     if not unit_str: return ""
     u = str(unit_str).lower().strip().replace('.', '')
@@ -62,6 +73,16 @@ def main():
             elif norm_unit == 'nos':
                 count = raw_qty
 
+        # AMBER Carbon Calculation (Bonus B2)
+        carbon_total, carbon_factor = "", ""
+        comment = item.get("comment", "")
+        category = item.get("material_category", "")
+        
+        if category in EPD_DATABASE and isinstance(raw_qty, (int, float)):
+            carbon_factor = EPD_DATABASE[category]["carbon_factor"]
+            carbon_total = round(raw_qty * carbon_factor, 2)
+            comment = f"EPD Source: {EPD_DATABASE[category]['source']}"
+
         # Exact column index mapping based on template structure for Excel
         mapped_row = {
             2: item.get("boq_item_no", ""),               # Column B: BOQ Item No.
@@ -80,9 +101,14 @@ def main():
             18: length,                                   # Column R: Length (m)
             19: weight,                                   # Column S: Weight (kg)
             20: count,                                    # Column T: Count (Nos)
+            25: carbon_total,                             # Column Y: Embodied Carbon A1-A3
+            26: carbon_factor,                            # Column Z: GWP / kg
             28: item.get("schedule_item_code", ""),       # Column AB: Schedule Item Code
             44: safe_float(item.get("thickness_mm", "")), # Column AR: Thickness (mm)
-            46: safe_float(item.get("diameter_mm", ""))   # Column AT: Diameter (mm)
+            46: safe_float(item.get("diameter_mm", "")),  # Column AT: Diameter (mm)
+            47: safe_float(item.get("unit_rate", "")),    # Column AU: Unit Rate
+            48: safe_float(item.get("total_cost", "")),   # Column AV: Total Cost
+            50: comment                                   # Column AX: Comment
         }
         rows.append(mapped_row)
 
@@ -97,6 +123,7 @@ def main():
             "weight_kg": weight,
             "count_nos": count
         }
+        j_item['embodied_carbon'] = carbon_total
         json_export.append(j_item)
 
     # 1. Save to passport.json correctly
@@ -125,7 +152,7 @@ def main():
                         cell.value = val
 
         wb.save(OUTPUT_EXCEL)
-        print(f"Successfully generated {OUTPUT_EXCEL}")
+        print(f"✅ Successfully generated {OUTPUT_EXCEL}")
     else:
         print("Warning: Template missing!")
 

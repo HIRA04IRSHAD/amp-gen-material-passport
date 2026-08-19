@@ -15,7 +15,7 @@ MODEL = "gemini-3.6-flash"
 MAX_RETRIES = 3
 RETRY_BASE_DELAY = 10
 
-# Final prompt: Kept source_page for manual review, removed notes/confidence, added strict sub-item rules
+# Final prompt: Updated with all green columns and strict anti-shifting rules
 EXTRACTION_PROMPT = """
 You are a highly precise Data Extraction AI reading a scanned, dot-matrix Bill of Quantities (BoQ) for a civil construction project in India.
 
@@ -27,7 +27,7 @@ CRITICAL ANTI-SHIFTING RULES (MUST FOLLOW):
 SUB-ITEM RULES:
 1. Items with multiple sub-parts (e.g., 16 i, 16 ii, or a, b, c) MUST be split into separate JSON objects (e.g., "16a", "16b"). Extract the specific quantity for EACH sub-part accurately.
 
-Extract EVERY line item and return a JSON array of objects with EXACTLY these fields:
+Extract EVERY line item and return a JSON array of objects with EXACTLY these fields (use null if not found):
 - "source_page": (Integer) The page number (1-indexed) this item appears on.
 - "boq_item_no": (String) The printed item number.
 - "description": (String) Full description text.
@@ -46,8 +46,7 @@ Extract EVERY line item and return a JSON array of objects with EXACTLY these fi
 - "total_cost": (Number) The amount if printed, else null.
 - "schedule_item_code": (String) The DSR/SOR reference code on the far right.
 
-
-Return ONLY a JSON array of these objects.
+Return ONLY a JSON array of these objects without markdown blocks.
 """
 
 def get_client() -> genai.Client:
