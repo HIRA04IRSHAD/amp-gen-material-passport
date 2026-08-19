@@ -17,28 +17,35 @@ RETRY_BASE_DELAY = 10
 
 # Final prompt: Kept source_page for manual review, removed notes/confidence, added strict sub-item rules
 EXTRACTION_PROMPT = """
-You are reading a scanned, dot-matrix-printed Bill of Quantities (BoQ)
-for a civil construction project in India (DSR 1989 style schedule).
-The scan quality is poor, so read carefully and use context/column
-alignment to resolve ambiguous characters or digits.
+You are a highly precise Data Extraction AI reading a scanned, dot-matrix Bill of Quantities (BoQ) for a civil construction project in India.
 
-CRITICAL INSTRUCTION FOR SUB-ITEMS & QUANTITIES:
-1. Sub-items: Items like 16, 17, 31, 32, 34, 51 have multiple sub-parts (e.g., a, b, c or i, ii, iii). 
-   DO NOT merge them. You MUST split them into separate JSON objects. 
-   Give them item numbers like "16a", "16b". Extract the specific quantity, unit, and description for EACH sub-part accurately.
-2. Quantities: If a quantity is missing or illegible, set "original_quantity" to null.
+CRITICAL ANTI-SHIFTING RULES (MUST FOLLOW):
+1. HORIZONTAL TRACKING: Read strictly row by row, left to right. Never mix data between rows.
+2. MISSING VALUES: If a column (like Quantity or Schedule Code) is blank, illegible, or spans multiple lines, you MUST output `null` for that field. NEVER shift a value from row N+1 into row N.
+3. DECIMAL POINTS: Use the context of the unit and surrounding numbers to infer the correct decimal placement (e.g., '7.3' instead of '73').
 
-Extract EVERY line item (numbered row) visible across ALL pages. 
-For each item/sub-item, return a JSON object with EXACTLY these fields (do not add any extra fields):
+SUB-ITEM RULES:
+1. Items with multiple sub-parts (e.g., 16 i, 16 ii, or a, b, c) MUST be split into separate JSON objects (e.g., "16a", "16b"). Extract the specific quantity for EACH sub-part accurately.
 
-- "source_page": the page number (1-indexed) this item appears on.
-- "boq_item_no": the item number (e.g. "1", "16a"). Null if not present.
-- "description": the full item description text for this specific row/sub-row.
-- "discipline": guess one of: "Civil & Sitework", "Structural", "Electrical", "Plumbing & Sanitary", "HVAC", "Finishes", "Other".
-- "material_category": generic category (e.g. "Concrete", "Masonry", "Earthwork", "Steel", "Timber", "Paint/Finish", "Other").
-- "original_quantity": the quantity as a NUMBER (no commas/units), or null.
-- "original_unit": The unit of measurement (e.g., "Cu.m", "Sq.m").
-- "schedule_item_code": DSR/SOR reference code if present, else null.
+Extract EVERY line item and return a JSON array of objects with EXACTLY these fields:
+- "source_page": (Integer) The page number (1-indexed) this item appears on.
+- "boq_item_no": (String) The printed item number.
+- "description": (String) Full description text.
+- "floor_section": (String) Extract any section header above the item like "Schedule A" or "Sub-Head I". If none, return null.
+- "discipline": (String) Intelligently classify: "Civil & Sitework", "Structural", "Electrical", "Plumbing & Sanitary", "HVAC", "Finishes", "Other".
+- "material_product": (String) The primary specific material mentioned (e.g., "Cement concrete", "Burnt brick", "Teak wood").
+- "all_materials_detected": (String) A comma-separated list of all distinct materials found in the description (e.g., "Cement, Sand, Stone aggregate").
+- "material_category": (String) Classify into a broad category: "Concrete", "Earthwork", "Steel", "Timber", "Masonry", "Paint/Finish", "Other".
+- "material_confidence": (Number) A score from 0.0 to 1.0 reflecting your confidence in the material classification.
+- "mix_ratio": (String) Any mix ratio mentioned like "1:2:4" or "1:6". Null if not found.
+- "original_quantity": (Number) The extracted quantity.
+- "original_unit": (String) The printed unit.
+- "thickness_mm": (Number) Convert any mentioned thickness to mm (e.g., "40 mm thick" -> 40, "7 cm thick" -> 70). Null if none.
+- "diameter_mm": (Number) Convert any mentioned diameter to mm (e.g., "100 mm dia" -> 100). Null if none.
+- "unit_rate": (Number) The rate if printed, else null.
+- "total_cost": (Number) The amount if printed, else null.
+- "schedule_item_code": (String) The DSR/SOR reference code on the far right.
+
 
 Return ONLY a JSON array of these objects.
 """
