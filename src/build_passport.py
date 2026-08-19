@@ -29,13 +29,15 @@ def safe_float(val):
 
 def main():
     if not INPUT_JSON.exists():
-        print(f"Error: {INPUT_JSON} not found.")
+        print(f"Error: {INPUT_JSON} not found. Please run extract_boq.py first.")
         return
 
     with open(INPUT_JSON, 'r', encoding='utf-8') as f:
         items = json.load(f)
 
     rows = []
+    json_export = []
+    
     for item in items:
         raw_qty = safe_float(item.get("original_quantity", ""))
         raw_unit = item.get("original_unit", "")
@@ -48,7 +50,6 @@ def main():
         # Initialize quantity mapping columns to empty
         vol, area, length, weight, count = "", "", "", "", ""
         
-        # Smartly route quantity to respective dimension/unit column
         if isinstance(raw_qty, (int, float)) and raw_qty != "":
             if norm_unit == 'cum':
                 vol = raw_qty
@@ -61,7 +62,7 @@ def main():
             elif norm_unit == 'nos':
                 count = raw_qty
 
-        # Exact column index mapping based on template structure
+        # Exact column index mapping based on template structure for Excel
         mapped_row = {
             2: item.get("boq_item_no", ""),               # Column B: BOQ Item No.
             5: item.get("description", ""),               # Column E: Description
@@ -85,14 +86,32 @@ def main():
         }
         rows.append(mapped_row)
 
-    OUTPUT_EXCEL.parent.mkdir(parents=True, exist_ok=True)
-    
+        # Build clean JSON record mirroring the routed data
+        j_item = item.copy()
+        j_item['original_unit'] = norm_unit
+        if raw_qty != "": j_item['original_quantity'] = raw_qty
+        j_item['routed_quantities'] = {
+            "volume_cum": vol,
+            "area_sqm": area,
+            "length_m": length,
+            "weight_kg": weight,
+            "count_nos": count
+        }
+        json_export.append(j_item)
+
+    # 1. Save to passport.json correctly
+    OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+        json.dump(json_export, f, indent=2)
+    print(f"✅ Successfully generated {OUTPUT_JSON}")
+
+    # 2. Populate Excel Template
     if TEMPLATE_EXCEL.exists():
         shutil.copy(TEMPLATE_EXCEL, OUTPUT_EXCEL)
         wb = openpyxl.load_workbook(OUTPUT_EXCEL)
         ws = wb['Material Passport']
         
-        start_row = 7 # Starting below the 3 pre-filled example rows
+        start_row = 7 # Starting safely below example rows
             
         for r_idx, row_data in enumerate(rows):
             current_row = start_row + r_idx
@@ -106,7 +125,9 @@ def main():
                         cell.value = val
 
         wb.save(OUTPUT_EXCEL)
-        print("Success! Quantities automatically distributed into Volume, Area, Length, Weight, and Count columns.")
+        print(f"Successfully generated {OUTPUT_EXCEL}")
+    else:
+        print("Warning: Template missing!")
 
 if __name__ == "__main__":
     main()

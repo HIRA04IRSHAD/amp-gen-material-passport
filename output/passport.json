@@ -16,7 +16,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "2.8"
+    "schedule_item_code": "2.8",
+    "routed_quantities": {
+      "volume_cum": 32.0,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 1,
@@ -35,7 +42,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "2.26"
+    "schedule_item_code": "2.26",
+    "routed_quantities": {
+      "volume_cum": 12.0,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 1,
@@ -54,7 +68,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "2.28"
+    "schedule_item_code": "2.28",
+    "routed_quantities": {
+      "volume_cum": 11.0,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 1,
@@ -73,7 +94,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "2.29.1"
+    "schedule_item_code": "2.29.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 2,
@@ -92,7 +120,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "2.35.2"
+    "schedule_item_code": "2.35.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 90.6,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 2,
@@ -111,7 +146,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "4.5.10"
+    "schedule_item_code": "4.5.10",
+    "routed_quantities": {
+      "volume_cum": 8.0,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 2,
@@ -130,7 +172,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "4.6.11"
+    "schedule_item_code": "4.6.11",
+    "routed_quantities": {
+      "volume_cum": 7.3,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 2,
@@ -149,7 +198,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "4.11.1"
+    "schedule_item_code": "4.11.1",
+    "routed_quantities": {
+      "volume_cum": 0.1,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 3,
@@ -168,7 +224,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "4.24"
+    "schedule_item_code": "4.24",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 14.4,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 3,
@@ -187,7 +250,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "4.27"
+    "schedule_item_code": "4.27",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 14.4,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 3,
@@ -206,7 +276,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.3"
+    "schedule_item_code": "5.3",
+    "routed_quantities": {
+      "volume_cum": 11.3,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 3,
@@ -225,7 +302,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.4"
+    "schedule_item_code": "5.4",
+    "routed_quantities": {
+      "volume_cum": 1.0,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 3,
@@ -244,7 +328,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.5"
+    "schedule_item_code": "5.5",
+    "routed_quantities": {
+      "volume_cum": 0.6,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -263,7 +354,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.6.3"
+    "schedule_item_code": "5.6.3",
+    "routed_quantities": {
+      "volume_cum": 1.7,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -282,7 +380,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.7.3"
+    "schedule_item_code": "5.7.3",
+    "routed_quantities": {
+      "volume_cum": 0.1,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -301,7 +406,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.14"
+    "schedule_item_code": "5.14",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 108.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -320,7 +432,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.14"
+    "schedule_item_code": "5.14",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 17.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -339,7 +458,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.14"
+    "schedule_item_code": "5.14",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 19.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -358,7 +484,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.14"
+    "schedule_item_code": "5.14",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 2.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -377,7 +510,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.14"
+    "schedule_item_code": "5.14",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 9.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -396,7 +536,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.29"
+    "schedule_item_code": "5.29",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": 100.0,
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -415,7 +562,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.29"
+    "schedule_item_code": "5.29",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": 1375.0,
+      "count_nos": ""
+    }
   },
   {
     "source_page": 4,
@@ -434,7 +588,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.16"
+    "schedule_item_code": "5.16",
+    "routed_quantities": {
+      "volume_cum": 0.8,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -453,7 +614,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.1.14/6.5.1 6.5.2"
+    "schedule_item_code": "6.1.14/6.5.1 6.5.2",
+    "routed_quantities": {
+      "volume_cum": 17.0,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -472,7 +640,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.1.14/6.3 6.5.1/6.5.2"
+    "schedule_item_code": "6.1.14/6.3 6.5.1/6.5.2",
+    "routed_quantities": {
+      "volume_cum": 40.3,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -491,7 +666,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.13/6.21/ 6.5.1/6.5.2"
+    "schedule_item_code": "6.13/6.21/ 6.5.1/6.5.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 0.9,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -510,7 +692,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.18.4/6.21 6.5.1/6.5.2"
+    "schedule_item_code": "6.18.4/6.21 6.5.1/6.5.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 4.8,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -529,7 +718,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "6.18.4/6.19.1 6.20/6.21.1/ 6.21.2"
+    "schedule_item_code": "6.18.4/6.19.1 6.20/6.21.1/ 6.21.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 18.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -542,13 +738,20 @@
     "material_category": "Timber",
     "material_confidence": 0.95,
     "mix_ratio": null,
-    "original_quantity": 3.5,
-    "original_unit": "10 Cubic decimetre",
+    "original_quantity": 0.035,
+    "original_unit": "cum",
     "thickness_mm": null,
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": null
+    "schedule_item_code": null,
+    "routed_quantities": {
+      "volume_cum": 0.035,
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 5,
@@ -567,7 +770,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": null
+    "schedule_item_code": null,
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 18.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 6,
@@ -586,7 +796,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.26.4"
+    "schedule_item_code": "9.26.4",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 4.7,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 6,
@@ -605,7 +822,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.51"
+    "schedule_item_code": "9.51",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 20.0
+    }
   },
   {
     "source_page": 6,
@@ -624,7 +848,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": null
+    "schedule_item_code": null,
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 6.0
+    }
   },
   {
     "source_page": 6,
@@ -643,7 +874,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.127.3"
+    "schedule_item_code": "9.127.3",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 2.0
+    }
   },
   {
     "source_page": 6,
@@ -662,7 +900,14 @@
     "diameter_mm": 16,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.218.1"
+    "schedule_item_code": "9.218.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 10.0
+    }
   },
   {
     "source_page": 6,
@@ -681,7 +926,14 @@
     "diameter_mm": 10,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.219.3"
+    "schedule_item_code": "9.219.3",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 10.0
+    }
   },
   {
     "source_page": 6,
@@ -700,7 +952,14 @@
     "diameter_mm": 10,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.219.5"
+    "schedule_item_code": "9.219.5",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 8.0
+    }
   },
   {
     "source_page": 7,
@@ -719,7 +978,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.222.2"
+    "schedule_item_code": "9.222.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 20.0
+    }
   },
   {
     "source_page": 7,
@@ -738,7 +1004,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.222.3"
+    "schedule_item_code": "9.222.3",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 4.0
+    }
   },
   {
     "source_page": 7,
@@ -757,7 +1030,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.223"
+    "schedule_item_code": "9.223",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 10.0
+    }
   },
   {
     "source_page": 7,
@@ -776,7 +1056,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "N.S.I."
+    "schedule_item_code": "N.S.I.",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 11.3,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 7,
@@ -795,7 +1082,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "N.S.I."
+    "schedule_item_code": "N.S.I.",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 1.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 7,
@@ -814,7 +1108,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "N.S.I."
+    "schedule_item_code": "N.S.I.",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 21.0
+    }
   },
   {
     "source_page": 8,
@@ -833,7 +1134,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "9.224"
+    "schedule_item_code": "9.224",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 21.0
+    }
   },
   {
     "source_page": 8,
@@ -852,7 +1160,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "N.S.I."
+    "schedule_item_code": "N.S.I.",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": 66.0,
+      "count_nos": ""
+    }
   },
   {
     "source_page": 8,
@@ -871,7 +1186,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "10.14"
+    "schedule_item_code": "10.14",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": 187.0,
+      "count_nos": ""
+    }
   },
   {
     "source_page": 8,
@@ -890,7 +1212,14 @@
     "diameter_mm": 16,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "10.19"
+    "schedule_item_code": "10.19",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 5.0
+    }
   },
   {
     "source_page": 8,
@@ -909,7 +1238,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "11.4.2"
+    "schedule_item_code": "11.4.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 68.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 9,
@@ -928,7 +1264,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "11.10.1"
+    "schedule_item_code": "11.10.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 11.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 9,
@@ -947,7 +1290,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "11.16.1"
+    "schedule_item_code": "11.16.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 9.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 9,
@@ -966,7 +1316,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "11.20.2"
+    "schedule_item_code": "11.20.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": 18.0,
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 9,
@@ -985,7 +1342,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.29.1"
+    "schedule_item_code": "12.29.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 65.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 10,
@@ -1004,7 +1368,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.35.2"
+    "schedule_item_code": "12.35.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 65.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 10,
@@ -1023,7 +1394,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "N.S.I."
+    "schedule_item_code": "N.S.I.",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 32.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 10,
@@ -1042,7 +1420,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "N.S.I."
+    "schedule_item_code": "N.S.I.",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": 46.0,
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 10,
@@ -1061,7 +1446,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.39"
+    "schedule_item_code": "12.39",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 3.0
+    }
   },
   {
     "source_page": 10,
@@ -1080,7 +1472,14 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.69.2"
+    "schedule_item_code": "12.69.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": 10.0,
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 11,
@@ -1099,7 +1498,14 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.71.2"
+    "schedule_item_code": "12.71.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 9.0
+    }
   },
   {
     "source_page": 11,
@@ -1118,7 +1524,14 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.72.2.2"
+    "schedule_item_code": "12.72.2.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 3.0
+    }
   },
   {
     "source_page": 11,
@@ -1137,7 +1550,14 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.72.3.2"
+    "schedule_item_code": "12.72.3.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 3.0
+    }
   },
   {
     "source_page": 11,
@@ -1156,7 +1576,14 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "12.72.1.2"
+    "schedule_item_code": "12.72.1.2",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": 3.0
+    }
   },
   {
     "source_page": 11,
@@ -1175,7 +1602,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.8.4"
+    "schedule_item_code": "13.8.4",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 220.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 11,
@@ -1194,7 +1628,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.9.4"
+    "schedule_item_code": "13.9.4",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 220.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 11,
@@ -1213,7 +1654,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.25"
+    "schedule_item_code": "13.25",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 19.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1232,7 +1680,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.41"
+    "schedule_item_code": "5.31/13.24.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 20.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1251,7 +1706,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "5.31/13.24.1"
+    "schedule_item_code": "13.70.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 155.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1270,7 +1732,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.70.1"
+    "schedule_item_code": "13.73.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 285.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1289,7 +1758,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.73.1"
+    "schedule_item_code": "13.81.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 285.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1308,7 +1784,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.81.1"
+    "schedule_item_code": "13.81.4",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 47.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1327,7 +1810,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.81.4"
+    "schedule_item_code": "13.84.3",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 30.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1346,7 +1836,14 @@
     "diameter_mm": 100,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.84.3"
+    "schedule_item_code": "13.94.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": "",
+      "length_m": 10.0,
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 12,
@@ -1365,7 +1862,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.94.1"
+    "schedule_item_code": null,
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 77.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 13,
@@ -1384,7 +1888,14 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "13.101.1"
+    "schedule_item_code": "13.101.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 13.0,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   },
   {
     "source_page": 13,
@@ -1403,6 +1914,13 @@
     "diameter_mm": null,
     "unit_rate": null,
     "total_cost": null,
-    "schedule_item_code": "16.1"
+    "schedule_item_code": "16.1",
+    "routed_quantities": {
+      "volume_cum": "",
+      "area_sqm": 34.6,
+      "length_m": "",
+      "weight_kg": "",
+      "count_nos": ""
+    }
   }
 ]
