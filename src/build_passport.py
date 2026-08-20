@@ -21,6 +21,17 @@ EPD_DATABASE = {
     "Plaster": {"carbon_factor": 0.163, "source": "ICE Database V4.0 (Cement Mortar 1:3, general) via NZBG Guide V1.0"},
 }
 
+
+
+
+
+
+
+
+
+
+
+
 # Bonus B2 continued : DENSITY
 DENSITY_DATABASE = {
     "Concrete": 2400,
@@ -44,31 +55,141 @@ MIX_RATIO_RE = re.compile(r'1\s*:\s*\d+(?:\.\d+)?\s*:\s*\d+(?:\.\d+)?')
 MORTAR_RATIO_RE = re.compile(r'1\s*:\s*\d+(?:\.\d+)?')
 IS_CODE_RE = re.compile(r'\bIS\s*[:.]?\s*\d{2,5}(?:\s*\(\s*Part\s*[\dIVX]+\s*\))?', re.IGNORECASE)
 UNIT_MULTIPLIER_RE = re.compile(r'^\s*(\d+(?:\.\d+)?)\s*(sq\.?\s?m|cu\.?\s?m)\s*$', re.IGNORECASE)
-ITEM_NO_LEADING_INT_RE = re.compile(r'^\s*(\d+)')
 
-SECTION_RANGES = [
-    (1, 5, "Sub-Head - I, Earth Work"),
-    (6, 10, "Sub-Head - II, Cement Concrete Work"),
-    (11, 18, "Sub-Head - III, R.C.C. Work"),
-    (19, 23, "Sub-Head - IV, Brick Work"),
-    (24, 27, "Sub-Head - V, Wood Work"),
-    (28, 39, "Sub-Head - VI, Steel & Aluminium Fittings"),
-    (40, 48, "Sub-Head - VII, Flooring & Roof Treatment"),
-    (49, 51, "Sub-Head - VIII, Sanitary Installation (Rain Water Pipes)"),
-    (52, 56, "Sub-Head - IX, Plastering"),
-    (57, 63, "Sub-Head - X, White/Colour Washing & Painting"),
-    (64, 64, "Sub-Head - XI, Sundry Items / Site Development"),
+# ---------------------------------------------------------------------------
+# Floor / Section (Sub-Head) classification
+#
+# Previously this was hardcoded off the printed BOQ item number (e.g. items
+# 1-5 = "Earth Work", 6-10 = "Cement Concrete Work", ...). That breaks the
+# moment a BOQ doesn't follow the exact same numbering as the sample
+# document. Instead we now classify each item from the actual description
+# text: if the description talks about wood/timber it goes to "Wood Work",
+# if it talks about RCC / reinforced cement concrete it goes to "R.C.C.
+# Work", etc. Rules are checked in priority order (most specific first) so
+# that e.g. "R.C.C." is matched before the more generic "cement concrete".
+# ---------------------------------------------------------------------------
+
+FLOOR_SECTION_RULES = [
+    ("Sub-Head - III, R.C.C. Work", [
+        r'\bR\s*\.?\s*C\s*\.?\s*C\s*\.?\b',
+        r'reinforced\s+cement\s+concrete',
+        r'reinforced\s+concrete',
+    ]),
+    ("Sub-Head - V, Wood Work", [
+        r'wood\s*work',
+        r'\btimber\b',
+        r'\bteak\b',
+        r'\bchowkat',
+        r'\bwooden\b',
+        r'flush\s+door',
+        r'panel(l)?ed\s+door',
+        r'\bshutter\b',
+    ]),
+    ("Sub-Head - IV, Brick Work", [
+        r'brick\s*work',
+        r'burnt\s+brick',
+        r'\bmasonry\b',
+    ]),
+    ("Sub-Head - VI, Steel & Aluminium Fittings", [
+        r'\baluminium\b',
+        r'\baluminum\b',
+        r'mild\s+steel',
+        r'\bM\s*\.?\s*S\s*\.?\b',
+        r'\bgrill\b',
+        r'\brailing\b',
+        r'steel\s+(window|door|gate|section|fitting)',
+    ]),
+    ("Sub-Head - VIII, Sanitary Installation (Rain Water Pipes)", [
+        r'rain\s*water\s*pipe',
+        r'\bR\s*\.?\s*W\s*\.?\s*P\s*\.?\b',
+        r'\bsanitary\b',
+        r'down\s*pipe',
+        r'\bgutter\b',
+        r'\bplumb(ing)?\b',
+    ]),
+    ("Sub-Head - VII, Flooring & Roof Treatment", [
+        r'floor(ing)?',
+        r'roof\s+treatment',
+        r'terrac(e|ing)',
+        r'damp[- ]?proof',
+        r'water\s*proof(ing)?',
+        r'\bskirting\b',
+        r'\bdado\b',
+    ]),
+    ("Sub-Head - IX, Plastering", [
+        r'\bplaster',
+        r'\bpointing\b',
+        r'\brendering\b',
+    ]),
+    ("Sub-Head - X, White/Colour Washing & Painting", [
+        r'white\s*wash',
+        r'colou?r\s*wash',
+        r'\bpainting\b',
+        r'\bpaint\b',
+        r'\bdistemper\b',
+        r'\bprimer\b',
+        r'\bvarnish\b',
+        r'\benamel\b',
+    ]),
+    ("Sub-Head - I, Earth Work", [
+        r'earth\s*work',
+        r'excavat',
+        r'\bfilling\b',
+        r'back\s*filling',
+        r'anti[- ]?termite',
+    ]),
+    ("Sub-Head - II, Cement Concrete Work", [
+        r'\bP\s*\.?\s*C\s*\.?\s*C\s*\.?\b',
+        r'cement\s+concrete',
+        r'lean\s+concrete',
+        r'plain\s+concrete',
+    ]),
 ]
 
-def resolve_floor_section(boq_item_no, extracted_value):
-    m = ITEM_NO_LEADING_INT_RE.match(str(boq_item_no or ""))
-    if not m:
-        return extracted_value or ""
-    n = int(m.group(1))
-    for lo, hi, label in SECTION_RANGES:
-        if lo <= n <= hi:
+FLOOR_SECTION_RULES_COMPILED = [
+    (label, [re.compile(p, re.IGNORECASE) for p in patterns])
+    for label, patterns in FLOOR_SECTION_RULES
+]
+
+# Fallback: if no keyword in the description matched, use the material
+# category (already classified upstream) as a secondary signal.
+CATEGORY_TO_SECTION = {
+    "Earthwork": "Sub-Head - I, Earth Work",
+    "Timber": "Sub-Head - V, Wood Work",
+    "Masonry": "Sub-Head - IV, Brick Work",
+    "Plaster": "Sub-Head - IX, Plastering",
+    "Paint/Finish": "Sub-Head - X, White/Colour Washing & Painting",
+}
+
+DEFAULT_FLOOR_SECTION = "Sub-Head - XI, Sundry Items / Site Development"
+
+
+def resolve_floor_section(description, material_category, extracted_value):
+    """Classify a BOQ line item into its Sub-Head section by scanning the
+    item's description text for keywords (wood -> Wood Work, RCC/reinforced
+    cement concrete -> R.C.C. Work, brick -> Brick Work, etc.), instead of
+    relying on the printed item number.
+
+    Order of precedence:
+      1. Keyword match against the description (most reliable, most specific).
+      2. The item's already-classified material_category, mapped to a section.
+      3. Whatever section the extraction step (Gemini, reading the actual
+         page headers) already guessed.
+      4. A generic "Sundry Items" bucket as the last resort.
+    """
+    text = description or ""
+    for label, patterns in FLOOR_SECTION_RULES_COMPILED:
+        if any(p.search(text) for p in patterns):
             return label
-    return extracted_value or ""
+
+    if material_category in CATEGORY_TO_SECTION:
+        return CATEGORY_TO_SECTION[material_category]
+
+    if extracted_value:
+        return extracted_value
+
+    return DEFAULT_FLOOR_SECTION
+
 
 def confidence_label(category, mass_basis, grade_inferred):
     if category not in EPD_DATABASE:
@@ -266,7 +387,7 @@ def main():
         code_reference = extract_code_reference(description, item.get("standard_code_reference", ""))
         classification = build_classification(category, material, grade, mix_ratio)
 
-        floor_section = resolve_floor_section(item.get("boq_item_no", ""), item.get("floor_section", ""))
+        floor_section = resolve_floor_section(description, category, item.get("floor_section", ""))
         schedule_source = item.get("schedule_source", "")
 
         thickness_mm = safe_float(item.get("thickness_mm", ""))
@@ -342,7 +463,7 @@ def main():
         j_item = item.copy()
         j_item['gmap_id'] = mapped_row[1]
         j_item['floor_section'] = floor_section
-        j_item['floor_section_source'] = "inferred_from_item_sequence"  
+        j_item['floor_section_source'] = "inferred_from_description_keywords"
         j_item['schedule_source'] = schedule_source
         j_item['currency'] = item.get("currency", "INR") 
         j_item['grade'] = grade
