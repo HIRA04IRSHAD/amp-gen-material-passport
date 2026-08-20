@@ -35,12 +35,21 @@ DOCUMENT-LEVEL CONTEXT (read once, apply to every item):
   "CPWD DSR 2019", "UPPWD SOR". Use this exact text as "schedule_source" for
   EVERY item in the document, even pages where the header is cropped or faint
   (carry it over from a page where it IS legible).
-- Track section/division headers as you move down the document (e.g.
-  "Schedule 'A'", "Schedule 'B'", "Sub-Head I - Earth Work"). When a new
-  header appears, apply it to that item and every item after it UNTIL a new
-  header appears. Do NOT output null for "floor_section" just because the
-  header is not printed directly above that specific row -- carry the most
-  recent header forward, the way a human reading top-to-bottom would.
+- Track section/division headers as you move down the document. These
+  headers exist at TWO nested levels and you must capture the MORE SPECIFIC
+  (deeper) one, not just the top-level one:
+    Level 1 (broad, changes rarely): e.g. "Schedule 'A'", "Schedule 'B'".
+    Level 2 (granular, changes often): e.g. "Sub-Head - I, Earth Work",
+      "Sub-Head - II, Concrete Work", "Sub-Head - III, RCC Work".
+  "floor_section" MUST be the Level 2 (Sub-Head) heading in effect for that
+  item, e.g. "Sub-Head - I, Earth Work" -- NOT the Level 1 heading alone.
+  If a page only shows a Level 1 heading with no Sub-Head printed yet,
+  carry forward the most recent Sub-Head heading you have seen, the way a
+  human reading top-to-bottom would. Only fall back to the Level 1 heading
+  if no Sub-Head heading has appeared anywhere in the document yet.
+  Do NOT let the item number reset or a Level 1 heading repeating on every
+  page trick you into re-using the same Level 1 value for every single row
+  in the document -- that is a sign you have missed the Sub-Head headings.
 
 Extract EVERY line item and return a JSON array of objects with EXACTLY these fields (use null if not found):
 - "source_page": (Integer) The page number (1-indexed) this item appears on.
@@ -51,7 +60,17 @@ Extract EVERY line item and return a JSON array of objects with EXACTLY these fi
 - "discipline": (String) Intelligently classify: "Civil & Sitework", "Structural", "Electrical", "Plumbing & Sanitary", "HVAC", "Finishes", "Other".
 - "material_product": (String) The primary specific material mentioned (e.g., "Cement concrete", "Burnt brick", "Teak wood").
 - "all_materials_detected": (String) A comma-separated list of all distinct materials found in the description (e.g., "Cement, Sand, Stone aggregate").
-- "material_category": (String) Classify into a broad category: "Concrete", "Earthwork", "Steel", "Timber", "Masonry", "Paint/Finish", "Other".
+- "material_category": (String) Classify into a broad category: "Concrete", "Earthwork", "Steel", "Timber", "Masonry", "Plaster", "Paint/Finish", "Other".
+  IMPORTANT distinction: "Plaster" is for cement/sand (or lime) plastering,
+  rendering, or pointing work applied to walls/ceilings/floors as a base
+  layer (typically several mm to a few cm thick, described as e.g.
+  "12 mm cement plaster 1:4", "15 mm thick plastering"). "Paint/Finish" is
+  ONLY for actual paint, primer, distemper, white/colour washing, or
+  varnish -- a thin decorative/protective coating, not a structural mortar
+  layer. Do NOT put plastering or pointing items in "Paint/Finish" just
+  because they are both finishing work -- they have very different
+  material composition, density, and embodied carbon and must be kept
+  separate.
 - "material_confidence": (Number) A score from 0.0 to 1.0 reflecting your confidence in the material classification.
 - "grade": (String) A named material grade ONLY if literally printed in the text (e.g., "M-15", "Fe-500D", "43 Grade OPC"). Do NOT infer or calculate a grade from a mix ratio -- leave null if no grade word is printed. Grade inference from mix ratios is handled separately downstream.
 - "mix_ratio": (String) Any mix ratio mentioned like "1:2:4" or "1:6". Null if not found.
@@ -126,11 +145,11 @@ def main():
     out_dir = Path(args.out)
     review_dir = out_dir / "ocr_review"
     review_dir.mkdir(parents=True, exist_ok=True)
-    
+
     print("Rendering page images locally via PyMuPDF...")
     n_pages = render_review_images(args.pdf, review_dir)
     print(f"  {n_pages} page(s) rendered to {review_dir}")
-    
+
     client = get_client()
     print(f"\nSending PDF to Gemini for smart extraction (handling sub-items)...")
     all_items = extract_whole_pdf(client, args.pdf)
