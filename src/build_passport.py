@@ -56,18 +56,7 @@ MORTAR_RATIO_RE = re.compile(r'1\s*:\s*\d+(?:\.\d+)?')
 IS_CODE_RE = re.compile(r'\bIS\s*[:.]?\s*\d{2,5}(?:\s*\(\s*Part\s*[\dIVX]+\s*\))?', re.IGNORECASE)
 UNIT_MULTIPLIER_RE = re.compile(r'^\s*(\d+(?:\.\d+)?)\s*(sq\.?\s?m|cu\.?\s?m)\s*$', re.IGNORECASE)
 
-# ---------------------------------------------------------------------------
-# Floor / Section (Sub-Head) classification
-#
-# Previously this was hardcoded off the printed BOQ item number (e.g. items
-# 1-5 = "Earth Work", 6-10 = "Cement Concrete Work", ...). That breaks the
-# moment a BOQ doesn't follow the exact same numbering as the sample
-# document. Instead we now classify each item from the actual description
-# text: if the description talks about wood/timber it goes to "Wood Work",
-# if it talks about RCC / reinforced cement concrete it goes to "R.C.C.
-# Work", etc. Rules are checked in priority order (most specific first) so
-# that e.g. "R.C.C." is matched before the more generic "cement concrete".
-# ---------------------------------------------------------------------------
+
 
 FLOOR_SECTION_RULES = [
     ("Sub-Head - III, R.C.C. Work", [
