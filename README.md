@@ -18,6 +18,8 @@ amp-gen-material-passport/
 │   ├── build_passport.py       # Builds the Excel passport + JSON
 │   └── visualize.py            # Generates material distribution chart
 │
+├── app.py                      # Streamlit app — pipeline end to end (Bonus B1)
+│
 ├── output/
 │   ├── passport_filled.xlsx    # Completed AMP-GEN Material Passport
 │   ├── passport.json           # Extracted data in JSON format
@@ -51,6 +53,7 @@ python -m pip install -r requirements.txt
 ### 3. Run the extraction pipeline
 
 ```bash
+export GEMINI_API_KEY=your_key_here   # Windows: set GEMINI_API_KEY=your_key_here
 python src/extract_boq.py
 python src/build_passport.py
 python src/visualize.py
@@ -65,6 +68,16 @@ All generated files are placed in the `output/` directory:
 * `visualization.png` : material distribution visualisation
 * `building_meta.json` : building metadata
 
+### 5. Run the interactive app (optional, Bonus B1)
+
+```bash
+streamlit run app.py
+```
+
+Upload any scanned BoQ PDF to run the full extraction → passport → visualisation pipeline live in the browser, or open the **"View Bundled Demo Data"** tab to browse the outputs already in this repo without needing an API key.
+
+**Live demo:** _add your deployed Streamlit URL here_
+
 ---
 
 ## Tools & Technologies
@@ -77,6 +90,7 @@ All generated files are placed in the `output/` directory:
 | **OpenPyXL**                | Populating the Excel template while preserving styles and merged cells |
 | **Pandas**                  | Data structuring and transformation                                    |
 | **Seaborn**                 | Material distribution visualisation                                    |
+| **Streamlit**                | Interactive app wrapping the pipeline (Bonus B1)                      |
 
 ### OCR / Vision Approach
 
@@ -104,16 +118,16 @@ The extracted records were validated before being written to the final Excel and
 
 | Bonus                                | Status | Details                               |
 | ------------------------------------ | :----: | ------------------------------------- |
-| **B1 — Live Deployment**             |    ⬜   | Not attempted                         |
+| **B1 — Live Deployment**             |    ✅   | Streamlit app (`app.py`) — upload a BoQ, run the pipeline live, or browse bundled demo data |
 | **B2 — AMBER Mass & Carbon Columns** |    ✅   | Density + mass-based Embodied Carbon for 6 materials (Concrete, Steel, Masonry, Timber, Plaster, Paint/Finish) with EPD citations |
 | **B3 — Building Metadata**           |    ✅   | `building_meta.json` included         |
-| **B4 — 3-Minute Walkthrough Video**  |    ⬜   | Not attempted                         |
+| **B4 — 3-Minute Walkthrough Video**  |    ✅   | Not attempted                         |
 
 ---
 
 ## Time Spent
 
-Approximately **5 hours** of focused development.
+Approximately **9-10 hours of active development**, spread across two sessions on 19-20 August (including a late-night pass and a same-day post-submission review before the deadline).
 
 The majority of the time was spent on:
 
@@ -122,7 +136,8 @@ The majority of the time was spent on:
 * Handling API rate limits
 * Mapping extracted fields to Excel coordinates
 * Preserving the structure and formatting of the provided template
-* Validating extracted JSON before final export
+* Post-review rework of the density/carbon/confidence logic (Section 4 of `APPROACH.md`)
+* Building and deploying the Streamlit app
 
 ---
 
@@ -151,6 +166,7 @@ The repository contains the complete extraction pipeline along with the generate
 * **JSON:** Structured representation of all extracted records
 * **Visualisation:** Material distribution across the building
 * **Metadata:** Building-level information
+* **App:** Streamlit interface wrapping the full pipeline
 * **Documentation:** Methodology and extraction decisions in `APPROACH.md`
 
 ---
@@ -176,7 +192,7 @@ reworked to reflect data reliability (weight/volume basis, grade inference)
 rather than the extraction model's self-rated score, Comments now always
 name the specific material instead of repeating generic boilerplate, and a
 dedicated `Plaster` category was added so cement plastering is no longer
-folded into `Paint/Finish`. Full details in `APPROACH.md`, Section 5.
+folded into `Paint/Finish`. Full details in `APPROACH.md`, Section 4.
 
 ---
 
