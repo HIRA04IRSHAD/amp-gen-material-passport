@@ -285,9 +285,9 @@ with tab_run:
         placeholder="e.g., 1-3, 5 (Leave blank for all pages)"
     )
     
-    # FORMAT EXPLANATION & PRO TIP ADDED HERE
+    
     st.caption("📝 **Format:** Use commas for individual pages and hyphens for ranges (e.g., `1, 3, 5-7`).")
-    st.info("💡 **Tip:** AI processing takes about 15-30 seconds per page. Selecting a smaller number of relevant pages will give you much faster results!")
+    st.info("**Tip:** Extracting takes about 15-30 seconds per page. Selecting a smaller number of relevant pages will give you much faster results!")
 
     run_clicked = st.button("Run extraction pipeline", type="primary", disabled=not uploaded_pdf)
 
