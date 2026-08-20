@@ -406,7 +406,11 @@ def main():
         shutil.copy(TEMPLATE_EXCEL, OUTPUT_EXCEL)
         wb = openpyxl.load_workbook(OUTPUT_EXCEL)
         ws = wb['Material Passport']
-        start_row = 7
+        # Rows 4-6 in the template are "EXAMPLE 1/2/3" sample rows meant only
+        # for reference while filling by hand -- strip them from the actual
+        # output so real extracted data starts right after the header row.
+        ws.delete_rows(4, 3)
+        start_row = 4
         for r_idx, row_data in enumerate(rows):
             current_row = start_row + r_idx
             for col_idx, val in row_data.items():
