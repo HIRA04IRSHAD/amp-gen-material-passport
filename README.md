@@ -76,7 +76,7 @@ streamlit run app.py
 
 Upload any scanned BoQ PDF to run the full extraction → passport → visualisation pipeline live in the browser, or open the **"View Bundled Demo Data"** tab to browse the outputs already in this repo without needing an API key.
 
-**Live demo:** [_add your deployed Streamlit URL here_](https://amp-gen-material-passport.streamlit.app/)
+**Live demo:** [_deployed Streamlit URL_](https://amp-gen-material-passport.streamlit.app/)
 
 ---
 
