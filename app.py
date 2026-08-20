@@ -1,16 +1,6 @@
 """
 app.py
 End-to-end Streamlit app for the AMP-GEN Material Passport pipeline.
-
-Two modes (tabs):
-  1. "Run New Extraction" — upload a scanned BoQ PDF, the app runs the
-     existing pipeline (src/extract_boq.py -> src/build_passport.py ->
-     src/visualize.py) against it, then shows a preview + download
-     buttons for passport_filled.xlsx / passport.json / building_meta.json
-     / visualization.png.
-  2. "View Bundled Demo Data" — browses the already-generated
-     output/ folder (CBRI Roorkee sample) without needing an API key,
-     so the app is still useful/demoable even without Gemini access.
 """
 
 import json
@@ -22,6 +12,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import fitz  # For PDF page slicing
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "src"
@@ -33,7 +24,6 @@ import visualize as viz_mod
 
 TEMPLATE_EXCEL = ROOT / "AMP_Passport_Template.xlsx"
 DEMO_OUTPUT = ROOT / "output"
-
 
 GREEN_COLUMNS = [
     ("gmap_id", "GMAP Id"),
@@ -73,7 +63,6 @@ GREEN_COLUMNS = [
     ("comment", "Comment"),
 ]
 
-
 def _flatten_passport_records(data):
     flat = []
     for item in data:
@@ -95,21 +84,53 @@ st.set_page_config(page_title="AMP-GEN Material Passport", page_icon="🏗️", 
 
 _PIPELINE_LOCK = threading.Lock()
 
-# Pipeline 
+def parse_pages(page_str, max_pages):
+    """Converts '1-3, 5' into 0-indexed page numbers like [0, 1, 2, 4]"""
+    pages = set()
+    for part in page_str.split(','):
+        part = part.strip()
+        if not part:
+            continue
+        if '-' in part:
+            try:
+                s, e = map(int, part.split('-'))
+                pages.update(range(s, e + 1))
+            except ValueError:
+                pass
+        else:
+            try:
+                pages.add(int(part))
+            except ValueError:
+                pass
+    return sorted([p - 1 for p in pages if 1 <= p <= max_pages])
 
-def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
+def run_pipeline(pdf_bytes: bytes, api_key: str, page_selection: str = "", progress_cb=None):
     work_dir = Path(tempfile.mkdtemp(prefix="ampgen_"))
     pdf_path = work_dir / "uploaded_boq.pdf"
-    pdf_path.write_bytes(pdf_bytes)
-    out_dir = work_dir / "output"
-    review_dir = out_dir / "ocr_review"
-    review_dir.mkdir(parents=True, exist_ok=True)
-
+    
     def report(msg):
         if progress_cb:
             progress_cb(msg)
 
     with _PIPELINE_LOCK:
+        report("Processing PDF file...")
+        
+        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+        if page_selection.strip():
+            valid_pages = parse_pages(page_selection, doc.page_count)
+            if valid_pages:
+                doc.select(valid_pages)
+                report(f"PDF filtered to {len(valid_pages)} selected page(s).")
+            else:
+                report("Invalid page selection format, processing entire PDF.")
+        
+        doc.save(pdf_path)
+        doc.close()
+
+        out_dir = work_dir / "output"
+        review_dir = out_dir / "ocr_review"
+        review_dir.mkdir(parents=True, exist_ok=True)
+
         report("Rendering PDF pages...")
         extract_boq.render_review_images(str(pdf_path), review_dir)
 
@@ -150,7 +171,6 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
         "png": out_dir / "visualization.png",
         "work_dir": work_dir,
     }
-
 
 def render_results(paths: dict, key_prefix: str = "run"):
     passport_json = paths["json"]
@@ -237,7 +257,6 @@ with tab_run:
         help="Used only for this session, never stored or logged."
     )
     
-    # HIGHLIGHTED NOTE
     st.sidebar.info(
         "**Note:** If you leave this field blank, the app will automatically use the default system-provided API Key securely stored in our backend secrets."
     )
@@ -261,12 +280,14 @@ with tab_run:
 
     uploaded_pdf = st.file_uploader("Upload a scanned BoQ PDF", type=["pdf"])
     
-    # NEW FEATURE: Page selection
     page_selection = st.text_input(
         "Specify Pages to Extract (Optional)", 
-        placeholder="e.g., 1-3, 5 (Leave blank for all pages)",
-        help="Specify which pages of the PDF to extract. Leave blank to process the entire document."
+        placeholder="e.g., 1-3, 5 (Leave blank for all pages)"
     )
+    
+    # FORMAT EXPLANATION & PRO TIP ADDED HERE
+    st.caption("📝 **Format:** Use commas for individual pages and hyphens for ranges (e.g., `1, 3, 5-7`).")
+    st.info("💡 **Tip:** AI processing takes about 15-30 seconds per page. Selecting a smaller number of relevant pages will give you much faster results!")
 
     run_clicked = st.button("Run extraction pipeline", type="primary", disabled=not uploaded_pdf)
 
@@ -277,9 +298,10 @@ with tab_run:
             status = st.empty()
             try:
                 with st.spinner("Running pipeline..."):
-                    # Pass the API key to the pipeline
                     result_paths = run_pipeline(
-                        uploaded_pdf.getvalue(), api_key,
+                        uploaded_pdf.getvalue(), 
+                        api_key, 
+                        page_selection, 
                         progress_cb=lambda m: status.info(m),
                     )
                 status.success("Pipeline complete.")
