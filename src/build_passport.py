@@ -10,10 +10,10 @@ OUTPUT_EXCEL = Path("output/passport_filled.xlsx")
 OUTPUT_JSON = Path("output/passport.json")
 OUTPUT_META = Path("output/building_meta.json")
 
-# ---------------------------------------------------------------------------
+
 # Bonus B2: EPD Database for Carbon Calculations (AMBER Columns)
 # Values sourced via NotebookLM (ICE Database V4.0/V4.1)
-# ---------------------------------------------------------------------------
+
 EPD_DATABASE = {
     "Concrete": {"carbon_factor": 0.149, "source": "ICE Database V4.1 (Concrete C35/45) via NZBG Guide V1.0"},
     "Steel": {"carbon_factor": 1.55, "source": "ICE Database V4.0 (Steel Open Sections) via NZBG Guide V1.0"},
@@ -24,26 +24,9 @@ EPD_DATABASE = {
     "Plaster": {"carbon_factor": 0.163, "source": "ICE Database V4.0 (Cement Mortar 1:3, general) via NZBG Guide V1.0"},
 }
 
-# ---------------------------------------------------------------------------
-# Bonus B2 continued — DENSITY (AMBER "Density (kg/m³)" column)
-# ---------------------------------------------------------------------------
-# carbon_factor above is kg CO2e *per kg*, so it needs a mass in kg to be
-# meaningful. The column was previously left blank and embodied carbon was
-# computed as raw_qty x carbon_factor regardless of unit -- i.e. treating
-# cum/sqm/m/nos quantities as if they were already kilograms. That silently
-# under/over-counted carbon by orders of magnitude for anything not already
-# in kg (e.g. 8 cum of concrete was scored as if it were 8 kg).
-# These are standard reference densities paired 1:1 with EPD_DATABASE's
-# categories, used to convert volume -> mass before applying carbon_factor.
-# Paint/Finish has no real per-product density from the extractor (paint
-# coverage is normally reported in microns, not mm); 1300 kg/m3 is a rough
-# generic-emulsion placeholder, which is why Paint/Finish rows are tagged
-# [ASSUMED] rather than [OK] in the Comment column (see FIX 3 below).
-# Plaster was previously getting misclassified as Paint/Finish by the
-# extractor (see extract_boq.py fix) -- it now has its own category, with a
-# cement-mortar density and a real EPD-backed factor instead of Paint's
-# generic placeholder.
-# ---------------------------------------------------------------------------
+
+# Bonus B2 continued : DENSITY (AMBER "Density (kg/m³)" column)
+
 DENSITY_DATABASE = {
     "Concrete": 2400,
     "Steel": 7850,
@@ -68,28 +51,7 @@ IS_CODE_RE = re.compile(r'\bIS\s*[:.]?\s*\d{2,5}(?:\s*\(\s*Part\s*[\dIVX]+\s*\))
 UNIT_MULTIPLIER_RE = re.compile(r'^\s*(\d+(?:\.\d+)?)\s*(sq\.?\s?m|cu\.?\s?m)\s*$', re.IGNORECASE)
 ITEM_NO_LEADING_INT_RE = re.compile(r'^\s*(\d+)')
 
-# ---------------------------------------------------------------------------
-# FIX 1 — FLOOR / SECTION
-# ---------------------------------------------------------------------------
-# The extractor (extract_boq.py) only tracked the top-level page heading
-# ("Schedule 'A'") and never picked up the finer "Sub-Head" headings that
-# actually break the BoQ into work packages (Earth Work, Concrete Work,
-# R.C.C. Work, Brick Work, ...). That's why every one of the 74 rows in
-# boq_extracted.json came out with floor_section == "Schedule 'A'", even
-# though the template's own EXAMPLE rows (rows 4-6) show the expected
-# granularity: "Sub-Head - I, Earth Work", "Sub-Head - II, Concrete Work",
-# "Sub-Head - III, RCC Work".
-#
-# We don't have the original scanned PDF in this pass, so we can't re-OCR
-# the true sub-head captions. Instead we reconstruct them from the BoQ
-# item numbers and descriptions, using the standard CPWD/DSR work-package
-# order this document follows (verified against every item's description
-# below) and the same "Sub-Head - <roman>, <name>" naming convention the
-# template examples use. Every row this touches is still 100% traceable
-# back to item numbers, so a reviewer can check it against the scan.
-#
-# IMPORTANT: this is an inference, not an OCR read. See APPROACH.md.
-# ---------------------------------------------------------------------------
+
 SECTION_RANGES = [
     (1, 5, "Sub-Head - I, Earth Work"),
     (6, 10, "Sub-Head - II, Cement Concrete Work"),
@@ -114,18 +76,8 @@ def resolve_floor_section(boq_item_no, extracted_value):
             return label
     return extracted_value or ""
 
-# ---------------------------------------------------------------------------
-# FIX 2 — MATERIAL CONFIDENCE (revised)
-# ---------------------------------------------------------------------------
-# Previously this bucketed the extractor's raw 0.0-1.0 self-rated score
-# (an LLM's own opinion of its material-classification guess) into
-# High/Medium/Low. That's not trustworthy as a confidence signal — an LLM
-# saying "0.97 confident" doesn't mean the resulting carbon number is
-# actually reliable, and in practice it skewed almost everything "High"
-# regardless of whether the row's carbon figure could be computed at all.
-#
-# Confidence now reflects something a reviewer actually cares about: can
-# the Embodied Carbon figure on THIS row be trusted?
+
+# MATERIAL CONFIDENCE (revised)
 #   High   - category has an EPD factor AND mass came from a direct
 #            weight/volume figure (most reliable path)
 #   Medium - category has an EPD factor AND mass came from a derived
@@ -133,7 +85,7 @@ def resolve_floor_section(boq_item_no, extracted_value):
 #            nominal mix rather than printed (one extra inference step)
 #   Low    - category has no EPD factor, or there was no usable
 #            weight/volume figure to compute mass at all
-# ---------------------------------------------------------------------------
+
 def confidence_label(category, mass_basis, grade_inferred):
     if category not in EPD_DATABASE:
         return "Low"
@@ -242,16 +194,7 @@ def compute_derived_quantity(area, thickness_mm):
             pass
     return "", "", ""
 
-# ---------------------------------------------------------------------------
-# FIX 3 — COMMENT (revised)
-# ---------------------------------------------------------------------------
-# Previously every "Other"-category row got the exact same sentence
-# ("material category 'Other' not in current EPD database...") with no
-# mention of which material it was, and Paint/Finish rows were tagged [OK]
-# even though the factor behind them is an admitted generic placeholder,
-# not a real match. A reviewer scanning 19 identical "Other" comments in a
-# row has no way to tell them apart.
-#
+
 # Every comment now:
 #   - always names the specific material (material_product) so the row is
 #     identifiable on its own
@@ -259,7 +202,7 @@ def compute_derived_quantity(area, thickness_mm):
 #     was computed, instead of just citing the factor
 #   - uses [ASSUMED] instead of [OK] for Paint/Finish, since its factor is
 #     an explicit generic stand-in rather than a verified EPD match
-# ---------------------------------------------------------------------------
+
 def build_comment(category, material, mass_kg, mass_basis, factor, source,
                    grade_inferred, grade, mix_ratio):
     material = material or "Unclassified material"
@@ -347,8 +290,7 @@ def main():
         code_reference = extract_code_reference(description, item.get("standard_code_reference", ""))
         classification = build_classification(category, material, grade, mix_ratio)
 
-        # FIX 1: reconstruct Sub-Head level floor_section instead of the
-        # blanket "Schedule 'A'" the extractor produced.
+        
         floor_section = resolve_floor_section(item.get("boq_item_no", ""), item.get("floor_section", ""))
 
         schedule_source = item.get("schedule_source", "")
@@ -361,10 +303,7 @@ def main():
         depth_mm = safe_float(item.get("depth_mm", ""))
         derived_qty, derived_unit, derived_basis = compute_derived_quantity(area, thickness_mm)
 
-        # DENSITY + mass-based carbon (see DENSITY_DATABASE / compute_mass_kg
-        # above). mass is derived from weight(kg) directly, or volume x
-        # density, or a derived (area x thickness) volume x density -- never
-        # from raw_qty in an sqm/m/nos unit, which would silently mix units.
+        
         density = DENSITY_DATABASE.get(category, "")
         mass_kg, mass_basis = (None, None)
         if density != "":
@@ -376,13 +315,12 @@ def main():
             if mass_kg is not None:
                 carbon_total = round(mass_kg * carbon_factor, 2)
 
-        # FIX 3: comment always names the material; [OK]/[ASSUMED]/[EXCLUDED].
+        
         source = EPD_DATABASE.get(category, {}).get("source", "")
         comment = build_comment(category, material, mass_kg, mass_basis, carbon_factor,
                                  source, grade_inferred, grade, mix_ratio)
 
-        # FIX 2: reflects whether THIS row's carbon figure can be trusted,
-        # not the extractor's raw self-rated score.
+        
         confidence_display = confidence_label(category, mass_basis, grade_inferred)
 
         mapped_row = {
@@ -429,7 +367,7 @@ def main():
         j_item = item.copy()
         j_item['gmap_id'] = mapped_row[1]
         j_item['floor_section'] = floor_section
-        j_item['floor_section_source'] = "inferred_from_item_sequence"  # transparency flag
+        j_item['floor_section_source'] = "inferred_from_item_sequence"  
         j_item['schedule_source'] = schedule_source
         j_item['grade'] = grade
         j_item['mix_ratio'] = mix_ratio

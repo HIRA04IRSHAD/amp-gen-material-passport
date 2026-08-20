@@ -60,7 +60,7 @@ def make_chart():
         OUTPUT_PNG.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(OUTPUT_PNG, dpi=300, bbox_inches='tight')
         plt.close()
-        print(f"✅ Successfully wrote visualization chart to {OUTPUT_PNG}")
+        print(f"Successfully wrote visualization chart to {OUTPUT_PNG}")
     else:
         print("Error: 'material_category' field not found in JSON.")
 

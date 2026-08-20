@@ -2,7 +2,7 @@
 
 > **Take-Home Task — Material Passport Extraction & Visualisation**
 
-This project extracts **64 Bill of Quantities (BoQ) line items** from a scanned Bill of Quantities for **CBRI Roorkee — Principal's Residence (DSR 1989)** and maps them into the **AMP-GEN Material Passport template**.
+This project extracts **64 Bill of Quantities (BoQ) line items** from a scanned Bill of Quantities for **CBRI Roorkee : Principal's Residence (DSR 1989)** and maps them into the **AMP-GEN Material Passport template**.
 
 The pipeline also exports the extracted data as JSON and generates a visualisation showing the distribution of materials across the building.
 
@@ -60,10 +60,10 @@ python src/visualize.py
 
 All generated files are placed in the `output/` directory:
 
-* `passport_filled.xlsx` — completed Material Passport
-* `passport.json` — structured JSON representation of the extracted data
-* `visualization.png` — material distribution visualisation
-* `building_meta.json` — building metadata
+* `passport_filled.xlsx` : completed Material Passport
+* `passport.json` : structured JSON representation of the extracted data
+* `visualization.png` : material distribution visualisation
+* `building_meta.json` : building metadata
 
 ---
 
@@ -105,7 +105,7 @@ The extracted records were validated before being written to the final Excel and
 | Bonus                                | Status | Details                               |
 | ------------------------------------ | :----: | ------------------------------------- |
 | **B1 — Live Deployment**             |    ⬜   | Not attempted                         |
-| **B2 — AMBER Mass & Carbon Columns** |    ✅   | Added for 5+ materials with citations |
+| **B2 — AMBER Mass & Carbon Columns** |    ✅   | Density + mass-based Embodied Carbon for 6 materials (Concrete, Steel, Masonry, Timber, Plaster, Paint/Finish) with EPD citations |
 | **B3 — Building Metadata**           |    ✅   | `building_meta.json` included         |
 | **B4 — 3-Minute Walkthrough Video**  |    ⬜   | Not attempted                         |
 
@@ -162,6 +162,21 @@ The source document presented a genuine extraction challenge due to its **low-co
 Rather than relying on a single OCR pass, the workflow combined **multimodal document understanding, structured extraction, spatial alignment rules, and HITL validation**.
 
 The minor alignment issue around Item 55 was identified and resolved during validation, resulting in a verified final dataset.
+
+---
+
+## Update Log
+
+A post-submission review caught a unit bug in the Embodied Carbon
+calculation (materials quantified in cum/sqm/m/nos were being scored as if
+the raw quantity were already a mass in kg), which the empty Density column
+was meant to prevent. Fixed by populating Density per material category and
+computing carbon from an actual derived mass. Material Confidence was also
+reworked to reflect data reliability (weight/volume basis, grade inference)
+rather than the extraction model's self-rated score, Comments now always
+name the specific material instead of repeating generic boilerplate, and a
+dedicated `Plaster` category was added so cement plastering is no longer
+folded into `Paint/Finish`. Full details in `APPROACH.md`, Section 5.
 
 ---
 

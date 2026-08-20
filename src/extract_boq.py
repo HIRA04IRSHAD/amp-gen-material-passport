@@ -9,13 +9,13 @@ from google import genai
 from google.genai import types
 from google.genai import errors as genai_errors
 
-# ---- CONFIG ----
-DPI = 350              # for the local review images only
+# ---- CONFIGURATION ----
+DPI = 350              
 MODEL = "gemini-3.6-flash"
 MAX_RETRIES = 3
 RETRY_BASE_DELAY = 10
 
-# Final prompt: Updated with all green columns and strict anti-shifting rules
+
 EXTRACTION_PROMPT = """
 You are a highly precise Data Extraction AI reading a scanned Bill of Quantities
 (BoQ) for a civil construction project in India. The scan may be an old
