@@ -80,7 +80,7 @@ def _flatten_passport_records(data):
         flat.append(row)
     return flat
 
-st.set_page_config(page_title="AMP-GEN Material Passport", page_icon="🏗️", layout="wide")
+st.set_page_config(page_title="AMP-GEN", page_icon="🚀", layout="wide")
 
 _PIPELINE_LOCK = threading.Lock()
 
@@ -134,7 +134,7 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, page_selection: str = "", progr
         report("Rendering PDF pages...")
         extract_boq.render_review_images(str(pdf_path), review_dir)
 
-        report("Extracting line items via Gemini (this can take 1-3 minutes)...")
+        report("Extracting line items via Gemini (this can take 15-30 seconds...)")
         import os
         os.environ["GEMINI_API_KEY"] = api_key
         client = extract_boq.get_client()
@@ -239,7 +239,7 @@ def render_results(paths: dict, key_prefix: str = "run"):
             c4.download_button("⬇️ visualization.png", f, file_name="visualization.png", mime="image/png",
                                 key=f"{key_prefix}_dl_png")
 
-st.title("AMP-GEN Material Passport")
+st.title("Automated Material Passport Generation")
 st.caption("Upload a scanned BoQ PDF → extraction → Material Passport (Excel + JSON) → visualization.")
 
 tab_run, tab_demo = st.tabs(["Run New Extraction", "View Bundled Demo Data"])
