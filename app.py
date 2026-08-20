@@ -11,12 +11,6 @@ Two modes (tabs):
   2. "View Bundled Demo Data" — browses the already-generated
      output/ folder (CBRI Roorkee sample) without needing an API key,
      so the app is still useful/demoable even without Gemini access.
-
-Extraction requires a Gemini API key (GEMINI_API_KEY). On Streamlit
-Community Cloud, set it under App settings -> Secrets as:
-    GEMINI_API_KEY = "your-key-here"
-Users without that configured can paste their own key in the sidebar
-for their session only (never persisted, never logged).
 """
 
 import json
@@ -75,15 +69,12 @@ GREEN_COLUMNS = [
     ("diameter_mm", "Diameter (mm)"),
     ("unit_rate", "Unit Rate"),
     ("total_cost", "Total Cost"),
+    ("currency", "Currency"),
     ("comment", "Comment"),
 ]
 
 
 def _flatten_passport_records(data):
-    """passport.json stores volume/area/length/weight/count under a nested
-    routed_quantities dict, and derived quantity under a nested
-    derived_quantity dict. Pull those up to top-level keys so they show up
-    as normal DataFrame columns instead of disappearing into an object col."""
     flat = []
     for item in data:
         row = dict(item)
@@ -102,16 +93,11 @@ def _flatten_passport_records(data):
 
 st.set_page_config(page_title="AMP-GEN Material Passport", page_icon="🏗️", layout="wide")
 
-
 _PIPELINE_LOCK = threading.Lock()
-
-
 
 # Pipeline 
 
 def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
-    """Runs extract -> build -> visualize against an uploaded PDF in an
-    isolated temp directory. Returns a dict of output file paths (or raises)."""
     work_dir = Path(tempfile.mkdtemp(prefix="ampgen_"))
     pdf_path = work_dir / "uploaded_boq.pdf"
     pdf_path.write_bytes(pdf_bytes)
@@ -124,7 +110,6 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
             progress_cb(msg)
 
     with _PIPELINE_LOCK:
-        
         report("Rendering PDF pages...")
         extract_boq.render_review_images(str(pdf_path), review_dir)
 
@@ -144,7 +129,6 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
         boq_extracted_path = out_dir / "boq_extracted.json"
         boq_extracted_path.write_text(json.dumps(items, indent=2, ensure_ascii=False), encoding="utf-8")
 
-       
         report("Building Material Passport (Excel + JSON)...")
         build_passport.INPUT_JSON = boq_extracted_path
         build_passport.TEMPLATE_EXCEL = TEMPLATE_EXCEL
@@ -152,7 +136,6 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
         build_passport.OUTPUT_JSON = out_dir / "passport.json"
         build_passport.OUTPUT_META = out_dir / "building_meta.json"
         build_passport.main()
-
         
         report("Generating visualization...")
         viz_mod.INPUT_JSON = out_dir / "passport.json"
@@ -167,7 +150,6 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
         "png": out_dir / "visualization.png",
         "work_dir": work_dir,
     }
-
 
 
 def render_results(paths: dict, key_prefix: str = "run"):
@@ -237,8 +219,6 @@ def render_results(paths: dict, key_prefix: str = "run"):
             c4.download_button("⬇️ visualization.png", f, file_name="visualization.png", mime="image/png",
                                 key=f"{key_prefix}_dl_png")
 
-
-
 st.title("AMP-GEN Material Passport")
 st.caption("Upload a scanned BoQ PDF → extraction → Material Passport (Excel + JSON) → visualization.")
 
@@ -246,37 +226,58 @@ tab_run, tab_demo = st.tabs(["Run New Extraction", "View Bundled Demo Data"])
 
 with tab_run:
     st.sidebar.header("Gemini API Key")
+    
     try:
         secret_key = st.secrets.get("GEMINI_API_KEY", "")
     except Exception:
-        
         secret_key = ""
-    if secret_key:
-        st.sidebar.success("Using API key from app secrets.")
+
+    user_api_key = st.sidebar.text_input(
+        "Enter your GEMINI_API_KEY (Optional)", type="password",
+        help="Used only for this session, never stored or logged."
+    )
+    
+    # HIGHLIGHTED NOTE
+    st.sidebar.info(
+        "**Note:** If you leave this field blank, the app will automatically use the default system-provided API Key securely stored in our backend secrets."
+    )
+
+    if user_api_key:
+        api_key = user_api_key
+        st.sidebar.success("Using your custom API key.")
+    elif secret_key:
         api_key = secret_key
     else:
-        api_key = st.sidebar.text_input(
-            "Enter your GEMINI_API_KEY", type="password",
-            help="Used only for this session, never stored or logged.",
-        )
-        st.sidebar.caption(
-            "Don't have a key? Get a free one from "
-            "[Google AI Studio](https://aistudio.google.com/apikey) : "
-            "sign in with your Google account, click **Create API key**, "
-            "then paste it above. No key handy? Skip this tab and open "
-            "**View Bundled Demo Data** instead, it needs no key."
-        )
+        api_key = ""
+
+    st.sidebar.caption(
+        "Don't have a key? Get a free one from "
+        "[Google AI Studio](https://aistudio.google.com/apikey). "
+        "No key handy? Skip this tab and open "
+        "**View Bundled Demo Data** instead."
+    )
+
+    st.divider()
 
     uploaded_pdf = st.file_uploader("Upload a scanned BoQ PDF", type=["pdf"])
+    
+    # NEW FEATURE: Page selection
+    page_selection = st.text_input(
+        "Specify Pages to Extract (Optional)", 
+        placeholder="e.g., 1-3, 5 (Leave blank for all pages)",
+        help="Specify which pages of the PDF to extract. Leave blank to process the entire document."
+    )
+
     run_clicked = st.button("Run extraction pipeline", type="primary", disabled=not uploaded_pdf)
 
     if run_clicked:
         if not api_key:
-            st.error("Please provide a Gemini API key in the sidebar first.")
+            st.error("Please provide a Gemini API key or ensure the backend secret is set.")
         else:
             status = st.empty()
             try:
                 with st.spinner("Running pipeline..."):
+                    # Pass the API key to the pipeline
                     result_paths = run_pipeline(
                         uploaded_pdf.getvalue(), api_key,
                         progress_cb=lambda m: status.info(m),
