@@ -17,7 +17,9 @@ RETRY_BASE_DELAY = 10
 
 # Final prompt: Updated with all green columns and strict anti-shifting rules
 EXTRACTION_PROMPT = """
-You are a highly precise Data Extraction AI reading a scanned, dot-matrix Bill of Quantities (BoQ) for a civil construction project in India.
+You are a highly precise Data Extraction AI reading a scanned Bill of Quantities
+(BoQ) for a civil construction project in India. The scan may be an old
+dot-matrix printout, so read carefully.
 
 CRITICAL ANTI-SHIFTING RULES (MUST FOLLOW):
 1. HORIZONTAL TRACKING: Read strictly row by row, left to right. Never mix data between rows.
@@ -27,21 +29,41 @@ CRITICAL ANTI-SHIFTING RULES (MUST FOLLOW):
 SUB-ITEM RULES:
 1. Items with multiple sub-parts (e.g., 16 i, 16 ii, or a, b, c) MUST be split into separate JSON objects (e.g., "16a", "16b"). Extract the specific quantity for EACH sub-part accurately.
 
+DOCUMENT-LEVEL CONTEXT (read once, apply to every item):
+- Look at the page header/title block (usually repeated on every page) for the
+  name of the rate schedule this BoQ is priced against, e.g. "DSR 1989",
+  "CPWD DSR 2019", "UPPWD SOR". Use this exact text as "schedule_source" for
+  EVERY item in the document, even pages where the header is cropped or faint
+  (carry it over from a page where it IS legible).
+- Track section/division headers as you move down the document (e.g.
+  "Schedule 'A'", "Schedule 'B'", "Sub-Head I - Earth Work"). When a new
+  header appears, apply it to that item and every item after it UNTIL a new
+  header appears. Do NOT output null for "floor_section" just because the
+  header is not printed directly above that specific row -- carry the most
+  recent header forward, the way a human reading top-to-bottom would.
+
 Extract EVERY line item and return a JSON array of objects with EXACTLY these fields (use null if not found):
 - "source_page": (Integer) The page number (1-indexed) this item appears on.
 - "boq_item_no": (String) The printed item number.
 - "description": (String) Full description text.
-- "floor_section": (String) Extract any section header above the item like "Schedule A" or "Sub-Head I". If none, return null.
+- "floor_section": (String) The most recent section/division header in effect for this item (see DOCUMENT-LEVEL CONTEXT above). Only null if no header has appeared anywhere yet.
+- "schedule_source": (String) The rate schedule name from the page header/title (see DOCUMENT-LEVEL CONTEXT above), e.g. "DSR 1989". Same value for every item unless the document itself switches schedules partway through.
 - "discipline": (String) Intelligently classify: "Civil & Sitework", "Structural", "Electrical", "Plumbing & Sanitary", "HVAC", "Finishes", "Other".
 - "material_product": (String) The primary specific material mentioned (e.g., "Cement concrete", "Burnt brick", "Teak wood").
 - "all_materials_detected": (String) A comma-separated list of all distinct materials found in the description (e.g., "Cement, Sand, Stone aggregate").
 - "material_category": (String) Classify into a broad category: "Concrete", "Earthwork", "Steel", "Timber", "Masonry", "Paint/Finish", "Other".
 - "material_confidence": (Number) A score from 0.0 to 1.0 reflecting your confidence in the material classification.
+- "grade": (String) A named material grade ONLY if literally printed in the text (e.g., "M-15", "Fe-500D", "43 Grade OPC"). Do NOT infer or calculate a grade from a mix ratio -- leave null if no grade word is printed. Grade inference from mix ratios is handled separately downstream.
 - "mix_ratio": (String) Any mix ratio mentioned like "1:2:4" or "1:6". Null if not found.
-- "original_quantity": (Number) The extracted quantity.
-- "original_unit": (String) The printed unit.
+- "original_quantity": (Number) The extracted quantity exactly as printed (do not multiply or rescale it, even if the unit column says something like "100 Sq.m" or "10 Cubic decimetre" -- report the raw printed number and let "original_unit" carry the full unit text).
+- "original_unit": (String) The printed unit, verbatim, including any multiplier prefix printed with it (e.g. "100 Sq.m", "10 Cubic decimetre").
+- "standard_code_reference": (String) Any IS/BIS or other named standard cited in the description (e.g., "IS 456", "IS:9103"). Comma-separate if multiple. Null if none cited.
 - "thickness_mm": (Number) Convert any mentioned thickness to mm (e.g., "40 mm thick" -> 40, "7 cm thick" -> 70). Null if none.
 - "diameter_mm": (Number) Convert any mentioned diameter to mm (e.g., "100 mm dia" -> 100). Null if none.
+- "length_mm": (Number) Convert any explicit length dimension to mm if separately stated (e.g. panel/unit length, not the BoQ quantity). Null if none.
+- "width_mm": (Number) Convert any explicit width dimension to mm if stated. Null if none.
+- "height_mm": (Number) Convert any explicit height dimension to mm if stated. Null if none.
+- "depth_mm": (Number) Convert any explicit depth dimension to mm if stated (distinct from thickness). Null if none.
 - "unit_rate": (Number) The rate if printed, else null.
 - "total_cost": (Number) The amount if printed, else null.
 - "schedule_item_code": (String) The DSR/SOR reference code on the far right.
