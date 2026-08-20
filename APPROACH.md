@@ -1,4 +1,4 @@
-# Engineering Approach & Methodology — AMP-GEN Material Passport
+# Engineering Approach & Methodology : AMP-GEN Material Passport
 
 ## 1. Objective
 Build an automated pipeline to parse a low-contrast, dot-matrix scanned BoQ (`BoQ_CBRI_Principals_Residence.pdf`), structure line items into JSON, normalize units/quantities, and inject them into the official `AMP_Passport_Template.xlsx` without breaking its styling, merged cells, or example rows.
@@ -6,11 +6,11 @@ Build an automated pipeline to parse a low-contrast, dot-matrix scanned BoQ (`Bo
 ---
 
 ## 2. Tech Stack
-* **Python 3.13+** — pipeline scripting.
-* **Google Gemini 3.6 Flash** — multimodal extraction; handles degraded dot-matrix typography and layout context better than traditional OCR.
-* **PyMuPDF (`fitz`)** — in-memory PDF→PNG rendering, no external binary deps.
-* **Pandas / Openpyxl** — Pandas for data shaping; `openpyxl` for cell-level template injection so styling, merges, and formulas survive.
-* **Seaborn + Matplotlib** — material-distribution chart (`visualization.png`).
+* **Python 3.13+** : pipeline scripting.
+* **Google Gemini 3.6 Flash** : multimodal extraction; handles degraded dot-matrix typography and layout context better than traditional OCR.
+* **PyMuPDF (`fitz`)** : in-memory PDF→PNG rendering, no external binary deps.
+* **Pandas / Openpyxl** : Pandas for data shaping; `openpyxl` for cell-level template injection so styling, merges, and formulas survive.
+* **Seaborn + Matplotlib** : material-distribution chart (`visualization.png`).
 
 ---
 
@@ -32,7 +32,7 @@ Build an automated pipeline to parse a low-contrast, dot-matrix scanned BoQ (`Bo
 
 A later review of `passport_filled.xlsx` found the AMBER columns weren't actually reliable. Fixed in `build_passport.py` / `extract_boq.py`:
 
-* **Density was never populated — which hid a unit bug in Embodied Carbon.** Carbon factors are kg CO2e *per kg*, but carbon was computed as `raw_qty × factor` regardless of unit — so 8 cum of concrete was scored as 8 kg (~1000x undercount). Fixed by adding a `DENSITY_DATABASE` (kg/m³) and deriving real mass first: direct weight, direct volume, or derived volume (area × thickness) × density. Rows with no usable basis now show blank carbon instead of a fabricated number.
+* **Density was never populated : which hid a unit bug in Embodied Carbon.** Carbon factors are kg CO2e *per kg*, but carbon was computed as `raw_qty × factor` regardless of unit, so 8 cum of concrete was scored as 8 kg (~1000x undercount). Fixed by adding a `DENSITY_DATABASE` (kg/m³) and deriving real mass first: direct weight, direct volume, or derived volume (area × thickness) × density. Rows with no usable basis now show blank carbon instead of a fabricated number.
 * **Material Confidence was the LLM's self-rated score**, which skewed almost everything "High" regardless of data quality. Replaced with a deterministic rule: High = mass from direct weight/volume, Medium = mass derived via thickness or grade inferred from mix ratio, Low = no EPD match or no usable quantity.
 * **Comments repeated identical boilerplate** (e.g. the same sentence on all 19 "Other" rows) with no way to tell rows apart. Now every comment names the specific material and shows the mass/basis/math behind the number; Paint/Finish (a generic, non-EPD-matched factor) is tagged `[ASSUMED]` instead of a misleading `[OK]`.
 * **Cement plaster was falling under `Paint/Finish`** (no dedicated category existed), inheriting the wrong density and factor. Added a `"Plaster"` category to the extraction prompt (with explicit plaster-vs-paint guidance) and a matching EPD/density entry (1900 kg/m³, 0.163 kgCO2e/kg). Cut affected rows' carbon by ~4x and moved them to `[OK]`.

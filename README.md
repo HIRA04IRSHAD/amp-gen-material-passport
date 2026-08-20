@@ -1,6 +1,6 @@
 # AMP-GEN Material Passport
 
-> **Take-Home Task — Material Passport Extraction & Visualisation**
+> **Take-Home Task : Material Passport Extraction & Visualisation**
 
 This project extracts **64 Bill of Quantities (BoQ) line items** from a scanned Bill of Quantities for **CBRI Roorkee : Principal's Residence (DSR 1989)** and maps them into the **AMP-GEN Material Passport template**.
 
@@ -111,7 +111,7 @@ The extracted records were validated before being written to the final Excel and
 
 ---
 
-## ⏱Time Spent
+## Time Spent
 
 Approximately **5 hours** of focused development.
 
