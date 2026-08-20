@@ -33,19 +33,14 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 sys.path.insert(0, str(SRC))
 
-import extract_boq          # noqa: E402  (src/extract_boq.py)
-import build_passport        # noqa: E402  (src/build_passport.py)
-import visualize as viz_mod  # noqa: E402  (src/visualize.py)
+import extract_boq          
+import build_passport        
+import visualize as viz_mod  
 
 TEMPLATE_EXCEL = ROOT / "AMP_Passport_Template.xlsx"
 DEMO_OUTPUT = ROOT / "output"
 
-# All GREEN (required) columns from the template, in template order, mapped
-# to the field name they end up under in passport.json. Note: "Article
-# Number", "External DB Id", and "Currency" are also green in the template
-# but the pipeline never populates them (not extracted from the BoQ, no
-# multi-currency handling), so they're left out here rather than showing an
-# always-empty column.
+
 GREEN_COLUMNS = [
     ("gmap_id", "GMAP Id"),
     ("boq_item_no", "BOQ Item No."),
@@ -107,15 +102,13 @@ def _flatten_passport_records(data):
 
 st.set_page_config(page_title="AMP-GEN Material Passport", page_icon="🏗️", layout="wide")
 
-# A single pipeline run touches shared module-level globals in the src/
-# scripts (they weren't written to be called concurrently), so serialize
-# runs across sessions with a lock. Fine for a low-traffic demo/review app.
+
 _PIPELINE_LOCK = threading.Lock()
 
 
-# ---------------------------------------------------------------------------
-# Pipeline runner
-# ---------------------------------------------------------------------------
+
+# Pipeline 
+
 def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
     """Runs extract -> build -> visualize against an uploaded PDF in an
     isolated temp directory. Returns a dict of output file paths (or raises)."""
@@ -131,7 +124,7 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
             progress_cb(msg)
 
     with _PIPELINE_LOCK:
-        # --- Step 1: render pages for review + call Gemini for extraction ---
+        
         report("Rendering PDF pages...")
         extract_boq.render_review_images(str(pdf_path), review_dir)
 
@@ -151,7 +144,7 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
         boq_extracted_path = out_dir / "boq_extracted.json"
         boq_extracted_path.write_text(json.dumps(items, indent=2, ensure_ascii=False), encoding="utf-8")
 
-        # --- Step 2: build passport Excel + JSON (monkeypatch module paths) ---
+       
         report("Building Material Passport (Excel + JSON)...")
         build_passport.INPUT_JSON = boq_extracted_path
         build_passport.TEMPLATE_EXCEL = TEMPLATE_EXCEL
@@ -160,7 +153,7 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
         build_passport.OUTPUT_META = out_dir / "building_meta.json"
         build_passport.main()
 
-        # --- Step 3: visualization ---
+        
         report("Generating visualization...")
         viz_mod.INPUT_JSON = out_dir / "passport.json"
         viz_mod.OUTPUT_PNG = out_dir / "visualization.png"
@@ -176,9 +169,7 @@ def run_pipeline(pdf_bytes: bytes, api_key: str, progress_cb=None):
     }
 
 
-# ---------------------------------------------------------------------------
-# Shared rendering helpers
-# ---------------------------------------------------------------------------
+
 def render_results(paths: dict, key_prefix: str = "run"):
     passport_json = paths["json"]
     if not passport_json.exists():
@@ -247,20 +238,18 @@ def render_results(paths: dict, key_prefix: str = "run"):
                                 key=f"{key_prefix}_dl_png")
 
 
-# ---------------------------------------------------------------------------
-# UI
-# ---------------------------------------------------------------------------
-st.title("🏗️ AMP-GEN Material Passport")
+
+st.title("AMP-GEN Material Passport")
 st.caption("Upload a scanned BoQ PDF → extraction → Material Passport (Excel + JSON) → visualization.")
 
-tab_run, tab_demo = st.tabs(["🚀 Run New Extraction", "📊 View Bundled Demo Data"])
+tab_run, tab_demo = st.tabs(["Run New Extraction", "View Bundled Demo Data"])
 
 with tab_run:
     st.sidebar.header("Gemini API Key")
     try:
         secret_key = st.secrets.get("GEMINI_API_KEY", "")
     except Exception:
-        # No secrets.toml file at all (e.g. local dev without one configured)
+        
         secret_key = ""
     if secret_key:
         st.sidebar.success("Using API key from app secrets.")
@@ -269,6 +258,13 @@ with tab_run:
         api_key = st.sidebar.text_input(
             "Enter your GEMINI_API_KEY", type="password",
             help="Used only for this session, never stored or logged.",
+        )
+        st.sidebar.caption(
+            "Don't have a key? Get a free one from "
+            "[Google AI Studio](https://aistudio.google.com/apikey) : "
+            "sign in with your Google account, click **Create API key**, "
+            "then paste it above. No key handy? Skip this tab and open "
+            "**View Bundled Demo Data** instead, it needs no key."
         )
 
     uploaded_pdf = st.file_uploader("Upload a scanned BoQ PDF", type=["pdf"])
