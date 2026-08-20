@@ -15,7 +15,6 @@ import seaborn as sns
 INPUT_JSON = Path("output/passport.json")
 OUTPUT_PNG = Path("output/visualization.png")
 
-# Set aesthetic theme for the plot
 sns.set_theme(style="whitegrid")
 
 def make_chart():
@@ -30,14 +29,11 @@ def make_chart():
     df = pd.DataFrame(data)
     
     if 'material_category' in df.columns:
-        # Clean up empty or null categories
         df['material_category'] = df['material_category'].replace('', 'Not Specified').fillna('Not Specified')
         
-        # Group by Material Category and count frequencies
         cat_counts = df['material_category'].value_counts().reset_index()
         cat_counts.columns = ['Material Category', 'Count']
         
-        # Create the bar chart
         plt.figure(figsize=(10, 6))
         ax = sns.barplot(
             data=cat_counts, 
@@ -52,7 +48,6 @@ def make_chart():
         plt.xlabel('Number of BoQ Items', fontsize=12, fontweight='bold')
         plt.ylabel('Material Category', fontsize=12, fontweight='bold')
         
-        # Add value labels on the bars for extra clarity
         for p in ax.patches:
             width = p.get_width()
             if width > 0:
@@ -62,12 +57,10 @@ def make_chart():
                             fontsize=10, color='black', fontweight='semibold')
 
         plt.tight_layout()
-        
-        # Save output
         OUTPUT_PNG.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(OUTPUT_PNG, dpi=300, bbox_inches='tight')
         plt.close()
-        print(f"Successfully wrote visualization chart to {OUTPUT_PNG}")
+        print(f"✅ Successfully wrote visualization chart to {OUTPUT_PNG}")
     else:
         print("Error: 'material_category' field not found in JSON.")
 
