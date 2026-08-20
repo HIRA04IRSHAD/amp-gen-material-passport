@@ -15,7 +15,6 @@ MODEL = "gemini-3.6-flash"
 MAX_RETRIES = 3
 RETRY_BASE_DELAY = 10
 
-
 EXTRACTION_PROMPT = """
 You are a highly precise Data Extraction AI reading a scanned Bill of Quantities
 (BoQ) for a civil construction project in India. The scan may be an old
@@ -85,6 +84,7 @@ Extract EVERY line item and return a JSON array of objects with EXACTLY these fi
 - "depth_mm": (Number) Convert any explicit depth dimension to mm if stated (distinct from thickness). Null if none.
 - "unit_rate": (Number) The rate if printed, else null.
 - "total_cost": (Number) The amount if printed, else null.
+- "currency": (String) The currency for the costs. Since this is an Indian project, always output "INR".
 - "schedule_item_code": (String) The DSR/SOR reference code on the far right.
 
 Return ONLY a JSON array of these objects without markdown blocks.

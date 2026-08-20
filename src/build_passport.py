@@ -10,10 +10,7 @@ OUTPUT_EXCEL = Path("output/passport_filled.xlsx")
 OUTPUT_JSON = Path("output/passport.json")
 OUTPUT_META = Path("output/building_meta.json")
 
-
 # Bonus B2: EPD Database for Carbon Calculations (AMBER Columns)
-# Values sourced via NotebookLM (ICE Database V4.0/V4.1)
-
 EPD_DATABASE = {
     "Concrete": {"carbon_factor": 0.149, "source": "ICE Database V4.1 (Concrete C35/45) via NZBG Guide V1.0"},
     "Steel": {"carbon_factor": 1.55, "source": "ICE Database V4.0 (Steel Open Sections) via NZBG Guide V1.0"},
@@ -24,9 +21,7 @@ EPD_DATABASE = {
     "Plaster": {"carbon_factor": 0.163, "source": "ICE Database V4.0 (Cement Mortar 1:3, general) via NZBG Guide V1.0"},
 }
 
-
-# Bonus B2 continued : DENSITY (AMBER "Density (kg/m³)" column)
-
+# Bonus B2 continued : DENSITY
 DENSITY_DATABASE = {
     "Concrete": 2400,
     "Steel": 7850,
@@ -50,7 +45,6 @@ MORTAR_RATIO_RE = re.compile(r'1\s*:\s*\d+(?:\.\d+)?')
 IS_CODE_RE = re.compile(r'\bIS\s*[:.]?\s*\d{2,5}(?:\s*\(\s*Part\s*[\dIVX]+\s*\))?', re.IGNORECASE)
 UNIT_MULTIPLIER_RE = re.compile(r'^\s*(\d+(?:\.\d+)?)\s*(sq\.?\s?m|cu\.?\s?m)\s*$', re.IGNORECASE)
 ITEM_NO_LEADING_INT_RE = re.compile(r'^\s*(\d+)')
-
 
 SECTION_RANGES = [
     (1, 5, "Sub-Head - I, Earth Work"),
@@ -76,16 +70,6 @@ def resolve_floor_section(boq_item_no, extracted_value):
             return label
     return extracted_value or ""
 
-
-# MATERIAL CONFIDENCE (revised)
-#   High   - category has an EPD factor AND mass came from a direct
-#            weight/volume figure (most reliable path)
-#   Medium - category has an EPD factor AND mass came from a derived
-#            (area x thickness) volume, or the grade was inferred from a
-#            nominal mix rather than printed (one extra inference step)
-#   Low    - category has no EPD factor, or there was no usable
-#            weight/volume figure to compute mass at all
-
 def confidence_label(category, mass_basis, grade_inferred):
     if category not in EPD_DATABASE:
         return "Low"
@@ -95,12 +79,7 @@ def confidence_label(category, mass_basis, grade_inferred):
         return "Medium"
     return "High"
 
-
 def compute_mass_kg(vol, weight, derived_qty, derived_unit, density):
-    """Mass in kg for the carbon calc, from whichever quantity is actually
-    a mass or volume. Returns (mass_kg, basis) or (None, None) if nothing
-    usable is available -- callers must NOT fall back to raw quantity in
-    other units (sqm/m/nos), since that silently mixes units."""
     if weight not in ("", None):
         return float(weight), "direct-weight"
     if vol not in ("", None):
@@ -194,17 +173,7 @@ def compute_derived_quantity(area, thickness_mm):
             pass
     return "", "", ""
 
-
-# Every comment now:
-#   - always names the specific material (material_product) so the row is
-#     identifiable on its own
-#   - shows the actual mass/basis/math behind the carbon number, when one
-#     was computed, instead of just citing the factor
-#   - uses [ASSUMED] instead of [OK] for Paint/Finish, since its factor is
-#     an explicit generic stand-in rather than a verified EPD match
-
-def build_comment(category, material, mass_kg, mass_basis, factor, source,
-                   grade_inferred, grade, mix_ratio):
+def build_comment(category, material, mass_kg, mass_basis, factor, source, grade_inferred, grade, mix_ratio, unit_rate, total_cost):
     material = material or "Unclassified material"
 
     if category not in EPD_DATABASE:
@@ -221,10 +190,16 @@ def build_comment(category, material, mass_kg, mass_basis, factor, source,
     tag = "[ASSUMED]" if category == "Paint/Finish" else "[OK]"
     basis_note = "area × thickness (derived)" if mass_basis == "derived-volume" else mass_basis.replace("-", " ")
     carbon = round(mass_kg * factor, 2)
+    
     parts = [f"{tag} material: {material} — mass {round(mass_kg, 2)} kg [{basis_note}] "
              f"× {factor} kgCO2e/kg = {carbon} kgCO2e — {source}"]
+    
     if grade_inferred:
         parts.append(f"Grade {grade} inferred from nominal mix {mix_ratio} (IS 456)")
+        
+    if unit_rate != "" or total_cost != "":
+        parts.append("Cost in INR (₹)")
+        
     return "; ".join(parts)
 
 def main():
@@ -252,6 +227,7 @@ def main():
         "Seismic_Zone": extracted_meta.get("Seismic_Zone", "I to IV and V"),
         "Capacity": extracted_meta.get("Capacity", "10T/Sq.m and above"),
         "Schedule_Source": extracted_meta.get("Schedule_Source", "DSR 1989"),
+        "Currency": "INR (₹)",
         "Total_Line_Items": len(items)
     }
 
@@ -290,9 +266,7 @@ def main():
         code_reference = extract_code_reference(description, item.get("standard_code_reference", ""))
         classification = build_classification(category, material, grade, mix_ratio)
 
-        
         floor_section = resolve_floor_section(item.get("boq_item_no", ""), item.get("floor_section", ""))
-
         schedule_source = item.get("schedule_source", "")
 
         thickness_mm = safe_float(item.get("thickness_mm", ""))
@@ -302,8 +276,10 @@ def main():
         height_mm = safe_float(item.get("height_mm", ""))
         depth_mm = safe_float(item.get("depth_mm", ""))
         derived_qty, derived_unit, derived_basis = compute_derived_quantity(area, thickness_mm)
-
         
+        unit_rate = safe_float(item.get("unit_rate", ""))
+        total_cost = safe_float(item.get("total_cost", ""))
+
         density = DENSITY_DATABASE.get(category, "")
         mass_kg, mass_basis = (None, None)
         if density != "":
@@ -315,11 +291,9 @@ def main():
             if mass_kg is not None:
                 carbon_total = round(mass_kg * carbon_factor, 2)
 
-        
         source = EPD_DATABASE.get(category, {}).get("source", "")
-        comment = build_comment(category, material, mass_kg, mass_basis, carbon_factor,
-                                 source, grade_inferred, grade, mix_ratio)
-
+        
+        comment = build_comment(category, material, mass_kg, mass_basis, carbon_factor, source, grade_inferred, grade, mix_ratio, unit_rate, total_cost)
         
         confidence_display = confidence_label(category, mass_basis, grade_inferred)
 
@@ -360,6 +334,7 @@ def main():
             46: diameter_mm,
             47: safe_float(item.get("unit_rate", "")),
             48: safe_float(item.get("total_cost", "")),
+            49: item.get("currency", "INR"),
             50: comment
         }
         rows.append(mapped_row)
@@ -369,6 +344,7 @@ def main():
         j_item['floor_section'] = floor_section
         j_item['floor_section_source'] = "inferred_from_item_sequence"  
         j_item['schedule_source'] = schedule_source
+        j_item['currency'] = item.get("currency", "INR") 
         j_item['grade'] = grade
         j_item['mix_ratio'] = mix_ratio
         j_item['standard_code_reference'] = code_reference
